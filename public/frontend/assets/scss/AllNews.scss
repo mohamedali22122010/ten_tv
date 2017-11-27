@@ -1,0 +1,96 @@
+.AllNews{
+  direction: $direction;
+  .container{
+    padding: 80px 0;
+    .All{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      .News-item{
+        margin: 30px 0;
+        width: 48%;
+        display: flex;
+        justify-content: space-between;
+        .news-img{
+          position: relative;
+          width: 48%;
+          a{
+            img{
+              max-width: 100%;
+              opacity: 1;
+            }
+          }
+        }
+        .news-content{
+          width: 48%;
+          a{
+            display: block;
+            margin: 15px 0;
+            color:$FirstColor;
+            font-size: 18px;
+            font-weight: 600;
+            @include transition(0.3);
+          }
+          span{
+            display: block;
+            color: $WordColor;
+            font-size: 12px;
+            margin-bottom: 5px;
+            margin-top: 8px;
+            font-family: 'Cairo', sans-serif;
+          }
+          p{
+            color: #808080;
+            font-family: 'Cairo', sans-serif;
+            line-height: 1.5em;
+          }
+          button{
+            @include customButton($SecondColor,black,0,5,0,0,0);
+            width: 100px;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 600;
+            border: 2px solid $SecondColor;
+            @include transition(0.3);
+            a{
+              color: black;
+              @include transition(0.3);
+              margin: 0;
+            }
+            &:hover{
+              background-color: transparent;
+              a{
+                color: $SecondColor;
+              }
+            }
+          }
+        }
+        &:hover{
+          .news-img{
+            a{
+              img{
+                opacity:0.9;
+              }
+            }
+          }
+          .news-content{
+            a{
+              color: black;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 552px) and (max-width: 767px) {
+  .AllNews{
+    .container{
+      .All{
+        .News-item{
+          width: 100%;
+        }
+      }
+    }
+  }
+}

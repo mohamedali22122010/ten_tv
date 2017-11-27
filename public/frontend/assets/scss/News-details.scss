@@ -1,0 +1,266 @@
+.News-details{
+  padding: 80px  0;
+  direction: $direction;
+  .container{
+    .blog-details {
+      display: flex;
+      justify-content: space-between;
+      .middle{
+        width: 67%;
+        h2 {
+          color: #000;
+          margin-bottom: 5px;
+          font-weight: 600;
+          text-transform: capitalize;
+        }
+        .about-art {
+          width: 100%;
+          display: block;
+          padding: 5px 0;
+          margin-bottom: 30px;
+          .info {
+            float: right;
+            font-family: 'Cairo', sans-serif;
+            ul {
+              padding: 0;
+              li {
+                font-size: 13px;
+                display: inline-block;
+                vertical-align: -10px;
+                svg {
+                  width: 13px;
+                  height: 13px;
+                  margin: 0 3px;
+                  fill: #9e9e9e;
+                }
+                span {
+                  color: #9e9e9e;
+                  font-size: 15px;
+                }
+              }
+            }
+          }
+          .share {
+            float: left;
+            font-family: 'Cairo', sans-serif;
+            ul {
+              li {
+                display: inline-block;
+                &:first-child {
+                  margin-right: 10px;
+                }
+
+                a {
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  width: 30px;
+                  height: 30px;
+                  border-radius: 50%;
+                  text-align: center;
+                  overflow: hidden;
+
+                  &.facebook {
+                    background: #3b5998;
+                  }
+
+                  &.twitter {
+                    background: #76a9ea;
+                  }
+
+                  &.linkedin {
+                    background: #0084b1;
+                  }
+
+                  &.instagram {
+                    background: #ef72ad;
+                  }
+
+                  svg {
+                    width: 14px;
+                    height: 14px;
+                    fill: #fff;
+                  }
+                }
+              }
+            }
+          }
+        }
+        .blog-img {
+          width: 100%;
+          display: block;
+          img {
+            max-width: 100%;
+            display: block;
+          }
+        }
+        .text {
+          width: 100%;
+          display: block;
+          margin-top: 30px;
+          font-family: 'Cairo', sans-serif;
+
+          article {
+            font-size: 16px;
+            line-height: 1.8;
+            font-weight: 300;
+          }
+
+          h2 {
+            color: #000;
+            font-weight: bold;
+            margin-top: 10px;
+            margin-bottom: 10px;
+          }
+        }
+      }
+      .MoreNews{
+        width: 30%;
+        h2{
+          font-family: 'Cairo', sans-serif;
+          font-size: 24px;
+          margin-top: 0;
+          text-transform: capitalize;
+        }
+        .recent{
+          padding: 20px ;
+          box-sizing: border-box;
+          background: rgba(241,241,241,.14);
+          border: 1px solid rgba(238,238,238,.32);
+          .MoreNews-item{
+            margin: 0 0 30px 0;
+            position: relative;
+            img{
+              max-width: 100%;
+            }
+            h3{
+              color: $FirstColor;
+              font-size: 18px;
+              font-weight: 600;
+            }
+            p{
+              font-family: 'Cairo', sans-serif;
+              line-height: 1.6em;
+              font-weight: 300;
+              font-size: 14px;
+            }
+            a{
+              position: absolute;
+              right: 0;
+              left: 0;
+              bottom: 0;
+              top: 0;
+            }
+          }
+        }
+        .popular{
+          margin: 20px 0;
+          padding: 20px ;
+          box-sizing: border-box;
+          background: rgba(241,241,241,.14);
+          border: 1px solid rgba(238,238,238,.32);
+          .popular-item{
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-bottom: 20px;
+            .popular-img{
+              width: 48%;
+              img{
+                max-width: 100%;
+              }
+            }
+            .popular-data{
+              width: 48%;
+              font-family: 'Cairo', sans-serif;
+              h3{
+                color: #000;
+                font-weight: 400;
+                line-height: 1.5;
+                font-size: 18px;
+                margin: 5px 0;
+                @include transition(0.3);
+              }
+              svg{
+                width: 12px;
+                height: 12px;
+                margin: 0 5px;
+                fill: #9e9e9e;
+              }
+              span{
+                color: #9e9e9e;
+                font-size: 12px;
+              }
+            }
+            a{
+              position: absolute;
+              right: 0;
+              left: 0;
+              top: 0;
+              bottom: 0;
+            }
+            &:hover{
+              .popular-data{
+                h3{
+                  color: $FirstColor;
+                }
+              }
+            }
+          }
+        }
+
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .News-details{
+    .container{
+      .blog-details {
+        .MoreNews{
+          .popular{
+            .popular-item{
+              .popular-data{
+                h3{
+                  font-size: 12px;
+                }
+                span{
+                  font-size: 10px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (min-width: 551px) and (max-width: 767px) {
+  .News-details{
+    padding: 40px  0;
+    .container{
+      .blog-details {
+        flex-wrap: wrap;
+        .middle{
+          width: 100%;
+          h2{
+            font-size: 18px;
+          }
+        }
+        .MoreNews{
+          width: 100%;
+          .popular{
+            .popular-item{
+              .popular-data{
+                h3{
+                  font-size: 14px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

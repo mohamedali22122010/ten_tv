@@ -1,0 +1,135 @@
+.Broadcast{
+  background-color: $ThirdColor;
+  .container{
+    padding: 50px 0 100px 0;
+    h2{
+      color: $FirstColor;
+      margin: 0 0 30px 0;
+      text-align: right;
+    }
+    .Timeline{
+      display: flex;
+      line-height: 1;
+      background-color: #dadada;
+      .Timeline-logo{
+        width: 20%;
+        background-color: $FirstColor;
+        .logo-time{
+          background-color:#dadada ;
+          font-family: 'Cairo', sans-serif;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 10px 0;
+          h4{
+            color:$FirstColor;
+            text-transform: uppercase;
+            font-size: 20px;
+            margin: 0;
+            margin-left: 5px;
+          }
+          p{
+            font-size: 18px;
+            color: #909191;
+            margin: 0;
+            margin-right: 5px;
+          }
+
+        }
+        img{
+          max-width: 100%;
+        }
+
+      }
+      .Timeline-slider{
+        width: 80%;
+        .owl-carousel{
+          .item{
+            font-family: 'Cairo', sans-serif;
+            .time{
+              display: block;
+              align-items: center;
+              justify-content: space-between;
+              button{
+                display: none;
+                font-family: 'Cairo', sans-serif;
+                @include customButton($FirstColor,white,3,5,10,0,0)
+              }
+              p{
+                margin: 12px 0;
+                text-align: center;
+                font-weight: 600;
+              }
+            }
+            .item-img{
+              background-color: white;
+              h3{
+                text-align: center;
+                font-weight: 600;
+                padding: 18px 0;
+                margin: 0;
+              }
+            }
+          }
+          .itemActive{
+            display: block;
+            .time{
+              display: flex;
+              button{
+                display: block;
+              }
+              p{
+                text-align: right;
+                color: $FirstColor;
+              }
+            }
+            .item-img{
+              h3{
+                color: $FirstColor;
+              }
+            }
+
+          }
+
+        }
+        .owl-theme .owl-nav [class*=owl-]{
+          background-color: #c7c7c7;
+          opacity: 0.7;
+          margin: 0;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          display: flex;
+          align-items: center;
+          border-radius: 0;
+          @include transition(0.3);
+          svg{
+            width: 20px;
+            height: 20px;
+            fill: $FirstColor;
+            @include transition(0.3);
+          }
+          &:hover{
+            background-color: $FirstColor;
+            svg{
+              fill: white;
+            }
+          }
+        }
+        .owl-theme .owl-nav{
+          margin-top: 0;
+          background-color: white;
+        }
+        .owl-prev{
+          left: 0;
+        }
+        .owl-next{
+          right: -1px;
+        }
+
+
+
+      }
+    }
+  }
+}

@@ -1,0 +1,100 @@
+/*-----------------------*/
+@import url('https://fonts.googleapis.com/css?family=Lemonada|Source+Sans+Pro:200,300,400,600,700,900');
+@import url("https://fonts.googleapis.com/css?family=Cairo:200,300,400,600,700,900");
+$FirstColor:#009ada;
+$SecondColor:#f6d01d;
+$ThirdColor:#ececec;
+$FourthColor:#212331;
+$WordColor:#cad9df;
+$EnglishFont:'Source Sans Pro', sans-serif;
+$ArabicFont:'Lemonada', cursive;
+$direction:rtl;
+
+@mixin transition($val){
+  -webkit-transition: all #{$val}s ease-in;
+  -moz-transition: all #{$val}s ease-in;
+  -o-transition: all #{$val}s ease-in;
+  transition: all #{$val}s ease-in;
+}
+
+@mixin customButton($bgColor,$color,$BorderR,$paddingA,$paddingB,$marginA,$marginB){
+  background-color: $bgColor;
+  border: 0;
+  color: $color;
+  border-radius: #{$BorderR}px;
+  padding: #{$paddingA}px #{$paddingB}px ;
+  margin:#{$marginA}px #{$marginB}px;
+}
+@mixin background($img,$fix,$high){
+  background: url("../images/#{$img}")no-repeat center center #{$fix} ;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  min-height: #{$high}px;
+  width: 100%;
+}
+@mixin Placeholder($HolderColor){
+  &::-webkit-input-placeholder {
+    color: $HolderColor !important;
+  }
+  &:-moz-placeholder { /* Firefox 18- */
+    color: $HolderColor !important;
+  }
+  &::-moz-placeholder {  /* Firefox 19+ */
+    color: $HolderColor !important;
+  }
+  &:-ms-input-placeholder {
+    color: $HolderColor !important;
+  }
+}
+
+body{
+  box-sizing: border-box;
+  font-family: $ArabicFont;
+  overflow-x:hidden;
+}
+.Big_container{
+  min-width: 1920px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+.container{
+  width: 1170px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+ul{
+  padding-left: 0;
+  margin: 0;
+  list-style: none;
+}
+button,input,input:focus, input:active{
+  outline:0;
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+hr{
+  width: 100%;
+  height: 6px;
+  background-color:#e6e6e6 ;
+  margin: 0;
+  box-sizing: border-box;
+  border: 0;
+}
+
+@media (min-width: 551px) and (max-width: 1199px) {
+  .container{
+    width: 98%;
+    margin: 0 auto;
+  }
+}
+@media (max-width: 551px) {
+  .container{
+    width: 98%;
+    margin: 0 auto;
+  }
+}
