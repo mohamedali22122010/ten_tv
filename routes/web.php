@@ -31,6 +31,8 @@ Route::group(['prefix' => 'backend', 'namespace' => 'Backend','middleware'=>['au
 //	Route::resource('advertise', 'AdvertiseController');
 	Route::resource('post', 'PostController');
 	Route::resource('category', 'CategoryController');
+	Route::resource('program', 'ProgramController');
+	
 
 	Route::get('setting/index', array('as'=>'setting.index','uses'=>'SettingController@index'));
 	Route::post('setting/edit', array('as'=>'setting.edit','uses'=>'SettingController@update'));

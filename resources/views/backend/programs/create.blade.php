@@ -8,7 +8,7 @@
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
-				<form class="form-inputs" id="program-form" action="{{ route('program.store') }}" data-parsley-validate="true" method="program">
+				<form class="form-inputs" id="program-form" action="{{ route('program.store') }}" data-parsley-validate="true" method="post">
 					@include('backend.programs._form')
 				</form>
 			</div>

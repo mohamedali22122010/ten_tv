@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\HasMedia\Interfaces\HasMediaConversions;
 
-class Programs extends Model implements HasMediaConversions
+class Program extends Model implements HasMediaConversions
 {
 	use HasTranslations,HasMediaTrait,HasSlug;
 	

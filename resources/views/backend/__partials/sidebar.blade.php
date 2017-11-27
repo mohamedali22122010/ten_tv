@@ -42,6 +42,9 @@
 			@if(auth()->user()->role_id == 1 || auth()->user()->can('pages.index'))
 	            <li ><a href="{{route('pages.index')}}"> <i class="fa fa-pie-chart"></i> <span>{{trans('backend.Pages')}}</span></a></li>
             @endif
+			@if(auth()->user()->role_id == 1 || auth()->user()->can('program.index'))
+	            <li ><a href="{{route('program.index')}}"> <i class="fa fa-pie-chart"></i> <span>{{trans('backend.Program')}}</span></a></li>
+            @endif
 			@if(auth()->user()->role_id == 1 || auth()->user()->can('setting.index'))
 	            <li ><a href="{{ route('setting.index') }}"> <i class="fa fa-cog fa-fw"></i> <span>Setting</span></a></li>
             @endif
