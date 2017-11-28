@@ -28,6 +28,7 @@
   <link rel="stylesheet" href="{{asset('/bower_components/AdminLTE/plugins/jvectormap/jquery-jvectormap-1.2.2.css')}}">
   <!-- Daterange picker -->
   <link rel="stylesheet" href="{{asset('/bower_components/AdminLTE/plugins/daterangepicker/daterangepicker.css')}}">
+  <link rel="stylesheet" href="{{asset('/bower_components/AdminLTE/plugins/timepicker/bootstrap-timepicker.min.css')}}">
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="{{asset('/bower_components/AdminLTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}">
   <!-- DataTables -->
@@ -133,6 +134,7 @@
 <script src="{{asset("/bower_components/AdminLTE/plugins/daterangepicker/daterangepicker.js")}}"></script>
 <!-- datepicker -->
 <script src="{{asset("/bower_components/AdminLTE/plugins/datepicker/bootstrap-datepicker.js")}}"></script>
+<script src="{{asset("/bower_components/AdminLTE/plugins/timepicker/bootstrap-timepicker.min.js")}}"></script>
 <!-- Bootstrap WYSIHTML5 -->
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
@@ -312,6 +314,13 @@
 	      todayBtn: true,
 	      todayHighlight: true,
 	    });
+	    
+	    //Timepicker
+	    $('.timepicker').timepicker({
+	        showInputs: false,
+	        minuteStep: 15,
+	        showMeridian: false
+	    })
 	    
     });
   	</script>

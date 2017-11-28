@@ -99,6 +99,9 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+    	'show_at' => [
+	        'unique' => 'In this time there is a tv show already exists',
+	    ],
     ],
 
     /*

@@ -16,4 +16,5 @@ return [
     'Share now'=>'شارك الان',
     'Recent News'=>'اخر الاخبار',
     'Popular News'=>'اهم الاخبار',
+    'eposides'=>'حلقات البرنامج',
 ];

@@ -32,7 +32,8 @@ Route::group(['prefix' => 'backend', 'namespace' => 'Backend','middleware'=>['au
 	Route::resource('post', 'PostController');
 	Route::resource('category', 'CategoryController');
 	Route::resource('program', 'ProgramController');
-	
+	Route::resource('eposide', 'ProgramEposidesController');
+	Route::resource('broadcast', 'ProgramProdcastController');	
 
 	Route::get('setting/index', array('as'=>'setting.index','uses'=>'SettingController@index'));
 	Route::post('setting/edit', array('as'=>'setting.edit','uses'=>'SettingController@update'));
@@ -50,6 +51,10 @@ Route::group(['middleware'=>['frontend','web']],function(){
 	Route::get('/live', 'FrontendController@live');
 	Route::get('/news', 'FrontendController@news');
 	Route::get('/news_detail/{slug}', 'FrontendController@newsDetail');
+	
+	Route::get('/programs', 'FrontendController@programs');
+	Route::get('/program_detail/{slug}', 'FrontendController@programDetails');
+	
 	
 	// ../contact message submit  (ajax url)
 	Route::post('/contact/submit', 'FrontendController@ContactPageSubmit')->name('contactPageSubmit');

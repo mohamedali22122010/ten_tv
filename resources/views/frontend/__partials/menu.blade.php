@@ -29,7 +29,7 @@
                                     <li><a href="Beliefs.html">Beliefs</a></li>
                                 </ul>
                             </li>-->
-                            <li><a href="#">{{trans('frontend.programs')}}</a></li>
+                            <li><a href="{{url('/programs')}}">{{trans('frontend.programs')}}</a></li>
                             <li><a href="#">{{trans('frontend.broadcasttime')}}</a></li>
                             <li><a href="{{url('/about')}}">{{trans('frontend.aboutUs')}}</a></li>
                             <li><a href="{{url('/news')}}">{{trans('frontend.news')}}</a></li>

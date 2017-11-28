@@ -9,6 +9,8 @@ use App\Mail\ApplyCareerMail;
 use Illuminate\Support\Facades\Mail;
 use Storage;
 use App\Post;
+use App\Program;
+use App\ProgramEposides;
 use App\User;
 use App\Slider;
 use App\Category;
@@ -78,6 +80,19 @@ class FrontendController extends Controller
 	{
 		$page = Page::approved()->where('slug',$slug)->firstOrFail();
 		return view('frontend.page',compact('page'));
+	}
+	
+	public function programs()
+	{
+		$programs = Program::approved()->orderBy('id','desc')->get();
+		return view('frontend.programs',compact('programs'));
+	}	
+	
+	public function programDetails($slug)
+	{
+		$program = Program::approved()->where('slug',$slug)->firstOrFail();
+		$eposides = ProgramEposides::where('program_id',$program->id)->get();
+		return view('frontend.program_details',compact('program','eposides'));		
 	}
 	
 	    /**
