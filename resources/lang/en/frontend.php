@@ -21,4 +21,6 @@ return [
     'Recent News'=>'Recent News',
     'Popular News'=>'Popular News',
     'eposides'=>'Program Eposides',
+    'currently_shown'=>'Currently Shown',
+    'next'=>'Next',
 ];

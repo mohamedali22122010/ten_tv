@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Session;
 use App;
+use Carbon\Carbon;
 
 class SetLanguage
 {
@@ -19,12 +20,15 @@ class SetLanguage
     {
         if (Session::has('locale') && array_key_exists(Session::get('locale'), config('laravel-translatable.languages'))) {
             App::setLocale(Session::get('locale'));
+			Carbon::setLocale(Session::get('locale'));
         }
         else if($request->hasCookie('locale') && array_key_exists($request->cookie('locale'), config('laravel-translatable.languages'))) {
             App::setLocale($request->cookie('locale'));
+			Carbon::setLocale($request->cookie('locale'));
         }
         else{
             App::setLocale('ar');
+			Carbon::setLocale('ar');
         }
 
         return $next($request);

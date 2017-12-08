@@ -17,4 +17,6 @@ return [
     'Recent News'=>'اخر الاخبار',
     'Popular News'=>'اهم الاخبار',
     'eposides'=>'حلقات البرنامج',
+    'currently_shown'=>'يعرض الان',
+    'next'=>'التالى',
 ];

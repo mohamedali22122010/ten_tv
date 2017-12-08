@@ -28,20 +28,26 @@
 	            <p><svg><use xlink:href="#left"></use></svg>{{trans('frontend.broadcasttime')}}</p>
 	        </div><!--Time-left-->
 	        <div class="Time-right"><!--Time-right-->
+	        	@if($currentShow)
 	            <div class="Time-item">
-	                <h4>بالورقة و القلم</h4>
-	                <p>٦:٠٠ مســـاءً</p>
-	                <button>يعرض الآن</button>
+	                <h4>{{$currentShow->program->title}}</h4>
+	                <p>{{$currentShow->show_at}}</p>
+	                <button>{{trans('frontend.currently_shown')}}</button>
 	            </div>
+	            @endif
+	            @if($nextShow)
 	            <div class="Time-item">
-	                <h4>كلبــش </h4>
-	                <p>٧:٣٠ مســـاءً</p>
-	                <button>التــالي</button>
+	                <h4>{{$nextShow->program->title}}</h4>
+	                <p>{{$nextShow->show_at}}</p>
+	                <button>{{trans('frontend.next')}}</button>
 	            </div>
+	            @endif
+	            @if($upcommingShow)
 	            <div class="Time-item">
-	                <h4>رأى عــــام </h4>
-	                <p>٩:٠٠ مســـاءً</p>
+	                <h4>{{$upcommingShow->program->title}}</h4>
+	                <p>{{$upcommingShow->show_at}}</p>
 	            </div>
+	            @endif
 	        </div><!--Time-right-->
 	    </div><!--Time-->
 	</section>

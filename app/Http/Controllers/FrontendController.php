@@ -9,6 +9,8 @@ use App\Mail\ApplyCareerMail;
 use Illuminate\Support\Facades\Mail;
 use Storage;
 use App\Post;
+use App\ProgramTime;
+use Carbon\Carbon;
 use App\Program;
 use App\ProgramEposides;
 use App\User;
@@ -23,11 +25,6 @@ class FrontendController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        //$this->middleware('auth');
-    }
-	
 	public function changeLanguage($lang)
     {
         if (array_key_exists($lang, config('laravel-translatable.languages'))) {
@@ -49,8 +46,38 @@ class FrontendController extends Controller
     	$leftPost = Post::lightSelection()->approved()->where('home_page_left',1)->orderBy('id','desc')->first();
     	$soonPosts = Post::lightSelection()->approved()->where('home_page_soon',1)->orderBy('id','desc')->limit(3)->get();
 		$slides = Slider::where('active','=',1)->get();
-        return view('frontend.index',compact('slides','rightPost','leftPost','soonPosts'));
+		$dayOfWeek = Carbon::now()->dayOfWeek;
+        $currentShow = $this->getShow($dayOfWeek,true);
+		$notInIds = []; 
+		$nextShow = $this->getShow($dayOfWeek);
+		if(!$nextShow){
+			$nextShow = $this->getShow($dayOfWeek+1);
+		}
+		if($nextShow){
+			$notInIds[] = $nextShow->id;
+		}
+		$upcommingShow = $this->getShow($dayOfWeek,false,$notInIds);
+		if(!$upcommingShow){
+			$upcommingShow = $this->getShow($dayOfWeek+1);			
+		}
+				
+		return view('frontend.index',compact('slides','rightPost','leftPost','soonPosts','currentShow','nextShow','upcommingShow'));
     }
+
+	public function getShow($dayOfWeek,$is_current=false,$notInIds=[])
+	{
+		$programTime = ProgramTime::with(['program'=>function($query){
+			$query->where('status',1);
+		}])->where('day',$dayOfWeek);
+		
+		if($is_current){
+			return $programTime->where('show_at','<=',Carbon::now()->format('H:i'))->orderBy('show_at','desc')->first();
+		}
+		if($dayOfWeek == Carbon::now()->dayOfWeek){
+			$programTime->where('show_at','>',Carbon::now()->format('H:i'));
+		}
+		return $programTime->whereNotIn('id',$notInIds)->orderBy('show_at','asc')->first();	
+	}
 	
 	public function about()
 	{
@@ -95,7 +122,21 @@ class FrontendController extends Controller
 		return view('frontend.program_details',compact('program','eposides'));		
 	}
 	
-	    /**
+	public function Broadcast()
+	{
+		$dayOfWeek = Carbon::now()->dayOfWeek;
+		$broadcasts = ProgramTime::with(['program'=>function($query){
+			$query->where('status',1);
+		}])->where('day',$dayOfWeek)->orderBy('show_at','desc')->get();
+		$today = Carbon::now();
+		$currentShow = ProgramTime::with(['program'=>function($query){
+			$query->where('status',1);
+		}])->where('day',$dayOfWeek)->where('show_at','<=',Carbon::now()->format('H:i'))->orderBy('show_at','desc')->first();
+		
+		return view('frontend.broadcast',compact('broadcasts','today','currentShow'));		
+	}
+	
+	 /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request $request

@@ -53,6 +53,7 @@ Route::group(['middleware'=>['frontend','web']],function(){
 	Route::get('/news_detail/{slug}', 'FrontendController@newsDetail');
 	
 	Route::get('/programs', 'FrontendController@programs');
+	Route::get('/broadcast', 'FrontendController@Broadcast');
 	Route::get('/program_detail/{slug}', 'FrontendController@programDetails');
 	
 	

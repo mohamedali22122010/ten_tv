@@ -30,7 +30,7 @@
                                 </ul>
                             </li>-->
                             <li><a href="{{url('/programs')}}">{{trans('frontend.programs')}}</a></li>
-                            <li><a href="#">{{trans('frontend.broadcasttime')}}</a></li>
+                            <li><a href="{{url('/broadcast')}}">{{trans('frontend.broadcasttime')}}</a></li>
                             <li><a href="{{url('/about')}}">{{trans('frontend.aboutUs')}}</a></li>
                             <li><a href="{{url('/news')}}">{{trans('frontend.news')}}</a></li>
                             <li><a href="{{url('/live')}}">{{trans('frontend.live')}}</a></li>
