@@ -19,4 +19,5 @@ return [
     'eposides'=>'حلقات البرنامج',
     'currently_shown'=>'يعرض الان',
     'next'=>'التالى',
+    'follow_us_on'=>'تابعونا على '
 ];

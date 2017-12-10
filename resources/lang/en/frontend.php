@@ -23,4 +23,5 @@ return [
     'eposides'=>'Program Eposides',
     'currently_shown'=>'Currently Shown',
     'next'=>'Next',
+    'follow_us_on'=>'Follow Us On'
 ];

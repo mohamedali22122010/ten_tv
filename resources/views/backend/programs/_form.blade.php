@@ -47,7 +47,23 @@
 			<label>{{trans('backend.Program Repeate Time')}}</label>
 			<input class="form-control" name="repeate_time" type="text" value="{{old('repeate_time',$program->repeate_time)}}" placeholder="" >
 		</div>
-			
+
+        <div class="form-group">
+            <label>{{trans('backend.Program Facebook Page')}}</label>
+            <input class="form-control" name="facebook_link" type="text" value="{{old('facebook_link',$program->facebook_link)}}" placeholder="" >
+        </div>
+
+        <div class="form-group">
+            <label>{{trans('backend.Program Twitter Page')}}</label>
+            <input class="form-control" name="twitter_link" type="text" value="{{old('twitter_link',$program->twitter_link)}}" placeholder="" >
+        </div>
+
+        <div class="form-group">
+            <label>{{trans('backend.Program Instagram Page')}}</label>
+            <input class="form-control" name="instagram_link" type="text" value="{{old('instagram_link',$program->instagram_link)}}" placeholder="" >
+        </div>
+
+
 		<div class="imagesBlock row">
             <ul>
                 @foreach($program->getMedia('images') as $key => $image)

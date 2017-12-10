@@ -22,18 +22,18 @@
                     </div>
                     <div class="nav-menus-wrapper">
                         <ul class="nav-menu">
-                            <li class="active"><a href="{{url('/')}}">{{trans('frontend.home')}}</a></li>
+                            <li @if(Request::is('/')) class="active" @endif><a href="{{url('/')}}">{{trans('frontend.home')}}</a></li>
                             <!--<li><a href="">About</a>
                                 <ul class="nav-dropdown">
                                     <li><a href="Beliefs.html">Beliefs</a></li>
                                     <li><a href="Beliefs.html">Beliefs</a></li>
                                 </ul>
                             </li>-->
-                            <li><a href="{{url('/programs')}}">{{trans('frontend.programs')}}</a></li>
-                            <li><a href="{{url('/broadcast')}}">{{trans('frontend.broadcasttime')}}</a></li>
-                            <li><a href="{{url('/about')}}">{{trans('frontend.aboutUs')}}</a></li>
-                            <li><a href="{{url('/news')}}">{{trans('frontend.news')}}</a></li>
-                            <li><a href="{{url('/live')}}">{{trans('frontend.live')}}</a></li>
+                            <li @if(Request::is('programs')) class="active" @endif><a href="{{url('/programs')}}">{{trans('frontend.programs')}}</a></li>
+                            <li @if(Request::is('broadcast')) class="active" @endif><a href="{{url('/broadcast')}}">{{trans('frontend.broadcasttime')}}</a></li>
+                            <li @if(Request::is('about')) class="active" @endif><a href="{{url('/about')}}">{{trans('frontend.aboutUs')}}</a></li>
+                            <li @if(Request::is('news')) class="active" @endif><a href="{{url('/news')}}">{{trans('frontend.news')}}</a></li>
+                            <li @if(Request::is('live')) class="active" @endif><a href="{{url('/live')}}">{{trans('frontend.live')}}</a></li>
                         </ul>
                     </div>
                 </nav>

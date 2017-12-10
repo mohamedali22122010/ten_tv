@@ -24,10 +24,16 @@
                 <div class="about-art">
                     <div class="share">
                         <ul>
-                            <li><span>تابعونا على </span></li>
-                            <li><a href="#" target="_blank" class="facebook" title=""><svg><use xlink:href="#facebook"></use></svg> </a></li>
-                            <li><a href="#" target="_blank" class="twitter" title=""><svg><use xlink:href="#twitter"></use></svg> </a></li>
-                            <li><a href="#" target="_blank" class="instagram" title=""><svg><use xlink:href="#instagram"></use></svg> </a></li>
+                            <li><span>{{trans('frontend.follow_us_on')}}</span></li>
+                            @if($program->facebook_link)
+                            <li><a href="{{$program->facebook_link}}" target="_blank" class="facebook" title=""><svg><use xlink:href="#facebook"></use></svg> </a></li>
+                            @endif
+                            @if($program->twitter_link)
+                            <li><a href="{{$program->twitter_link}}" target="_blank" class="twitter" title=""><svg><use xlink:href="#twitter"></use></svg> </a></li>
+                            @endif
+                            @if($program->instagram_link)
+                            <li><a href="{{$program->instagram_link}}" target="_blank" class="instagram" title=""><svg><use xlink:href="#instagram"></use></svg> </a></li>
+                            @endif
                         </ul>
                     </div>
                 </div><!--about-art-->
