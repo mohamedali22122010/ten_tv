@@ -57,10 +57,15 @@ class SliderController extends Controller
 		$flash_message['class'] = 'success';
 		$flash_message['body'] = 'Slider Has been added';
 
-        // associate images to product
-        $this->dispatch(new AssociateMedia($slider,$request->urls,'images'));
-        //remove temp files
-        $this->dispatch(new RmoveTemp($request->urls));
+
+        $slider->clearMediaCollection('main_image');
+        $slider->clearMediaCollection('tablet_image');
+        $slider->clearMediaCollection('mobile_image');
+
+        $slider->addMedia($request->file('main_image'))->toCollection('main_image');
+        $slider->addMedia($request->file('tablet_image'))->toCollection('tablet_image');
+        $slider->addMedia($request->file('mobile_image'))->toCollection('mobile_image');
+
 
 		return redirect(route('sliders.index'))->with(['flash_message' => $flash_message]);
     }
@@ -110,13 +115,19 @@ class SliderController extends Controller
 		$flash_message = [];
 		$flash_message['class'] = 'success';
 		$flash_message['body'] = 'Slider Has been added';
+        if ($request->hasFile('main_image')) {
+            $slider->clearMediaCollection('main_image');          
+            $slider->addMedia($request->file('main_image'))->toCollection('main_image');
+        }
 
-        // add images 
-        $this->dispatch(new AssociateMedia($slider,$request->urls,'images'));
-        //remove temp files
-        $this->dispatch(new RmoveTemp($request->urls));
-        // removed deleted images
-        $this->dispatch(new RmoveMedia($slider,$request->removedImages,'images'));
+        if ($request->hasFile('tablet_image')) {
+            $slider->clearMediaCollection('tablet_image');
+            $slider->addMedia($request->file('tablet_image'))->toCollection('tablet_image');
+        }
+        if ($request->hasFile('mobile_image')) {
+            $slider->clearMediaCollection('mobile_image');
+            $slider->addMedia($request->file('mobile_image'))->toCollection('mobile_image');
+        }
 		
 		return redirect(route('sliders.index'))->with(['flash_message' => $flash_message]);
         

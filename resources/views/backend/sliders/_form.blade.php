@@ -13,11 +13,11 @@
 		<div id="tab-{{$name}}" class="tab-pane clearfix"  data-tab-index="{{$data_tab_index}}">
 			<div class="form-group">
 				<label>Slider Title ({{$name}})</label>
-				<input class="form-control" name="title[{{$language}}]" type="text" data-parsley-required="true" value="{{old('title.'.$language)?old('title.'.$language):$slider->getTranslation('title',$language)}}" placeholder="Input Placeholder Goes Here ..." >
+				<input class="form-control" name="title[{{$language}}]" type="text" data-parsley-required="false" value="{{old('title.'.$language)?old('title.'.$language):$slider->getTranslation('title',$language)}}" placeholder="Input Placeholder Goes Here ..." >
 			</div>
 			<div class="form-group">
 				<label>Slider Time ({{$name}})</label>
-				<input class="form-control" name="text[{{$language}}]" type="text" data-parsley-required="true" value="{{old('text.'.$language)?old('text.'.$language):$slider->getTranslation('text',$language)}}" placeholder="Input Placeholder Goes Here ..." >
+				<input class="form-control" name="text[{{$language}}]" type="text" data-parsley-required="false" value="{{old('text.'.$language)?old('text.'.$language):$slider->getTranslation('text',$language)}}" placeholder="Input Placeholder Goes Here ..." >
 			</div>
 			<div class="nextTab">
 				<a href="#tab-{{$name}}" class="btn btn-primary btn-lg pull-right" data-tab-index="{{++$data_tab_index}}">Next</a>
@@ -28,31 +28,59 @@
         
         <div class="imagesBlock row">
             <ul>
-                @foreach($slider->getMedia('images') as $key => $image)
+                @foreach($slider->getMedia('main_image') as $key => $image)
                 <li class="col-md-3">
-        			<div>
-                		<div class="actions">
-                			<a href="#" class="removeMedia" data-key="{{$key}}">X</a>
-                			@if($image->hasCustomProperty('main-image'))
-		                    <span class="main_media_image" rel="{{$image->file_name}}"></span>
-		                    <a href="#" rel="{{$image->file_name}}" class="makePrimary" style="display: none">Make Arabic</a>
-		                    @else
-		                    <a href="#" rel="{{$image->file_name}}" class="makePrimary">Make Arabic</a>
-		                    @endif
-            			</div>
-            			<img src="{{ $image->getUrl() }}"  alt="Image">
-        			</div>
-    			</li>
+                    <div>
+                        <img src="{{ $image->getUrl() }}"  alt="Image">
+                    </div>
+                </li>
                 @endforeach
             </ul>
         </div>
         <!-- imagesBlock -->
-		<label class="lowMargin">
-			<span>Slider Image</span>
-			<code>( Slider preferd to select image with ratio (3:2) )</code>
-		</label>
 
-        <div class="dropzone"></div>
+        <div class="form-group">
+            <label>Main Image</label>
+            <input type="file" data-parsley-required="true" name="main_image">
+        </div>
+
+        <div class="imagesBlock row">
+            <ul>
+                @foreach($slider->getMedia('tablet_image') as $key => $image)
+                <li class="col-md-3">
+                    <div>
+                        <img src="{{ $image->getUrl() }}"  alt="Image">
+                    </div>
+                </li>
+                @endforeach
+            </ul>
+        </div>
+        <!-- imagesBlock -->
+
+
+        <div class="form-group">
+            <label>Tablet Image</label>
+            <input type="file" data-parsley-required="true" name="tablet_image">
+        </div>
+
+        <div class="imagesBlock row">
+            <ul>
+                @foreach($slider->getMedia('mobile_image') as $key => $image)
+                <li class="col-md-3">
+                    <div>
+                        <img src="{{ $image->getUrl() }}"  alt="Image">
+                    </div>
+                </li>
+                @endforeach
+            </ul>
+        </div>
+        <!-- imagesBlock -->
+
+        <div class="form-group">
+            <label>Mobile Image</label>
+            <input type="file" data-parsley-required="true" name="mobile_image">
+        </div>
+
 		<div class="form-group">
 			<label>
 				<input class="minimal" name="active" type="checkbox" @if($slider-> active) checked @endif> Set Active 

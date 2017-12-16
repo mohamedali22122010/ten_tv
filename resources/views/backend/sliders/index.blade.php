@@ -40,7 +40,7 @@
 									<input class="bulk-action-checkbox" name="checkbox" type="checkbox" data-id="{{$slider->id}}" data-delete="{{ route('sliders.destroy',$slider->id) }}"  data-csrf='{{ csrf_token() }}' >
 								</td>
 								<td>
-									@foreach($slider->getMedia('images') as $key => $image)
+									@foreach($slider->getMedia('main_image') as $key => $image)
 										@if($image) 
 											<img style="width: 50px" src="{{ $image->getUrl() }}"  alt="Image">
 										@endif 

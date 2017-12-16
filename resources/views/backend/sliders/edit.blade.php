@@ -8,7 +8,7 @@
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
-				<form class="form-inputs" id="slider-form" action="{{ route('sliders.update',$slider->id) }}" data-parsley-validate="true" method="post" >
+				<form class="form-inputs" id="slider-form" action="{{ route('sliders.update',$slider->id) }}" data-parsley-validate="true" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="_method" value="PUT">
 					@include('backend.sliders._form')
 				</form>

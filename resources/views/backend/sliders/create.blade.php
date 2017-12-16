@@ -8,7 +8,7 @@
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
-				<form class="form-inputs" id="slider-form" action="{{ route('sliders.store') }}" data-parsley-validate="true" method="post">
+				<form class="form-inputs" id="slider-form" action="{{ route('sliders.store') }}" data-parsley-validate="true" method="post" enctype="multipart/form-data">
 					@include('backend.sliders._form')
 				</form>
 			</div>

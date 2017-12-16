@@ -1,28 +1,19 @@
 <section class="slider">
     <hr>
-	@foreach($slides as $slide)
     <div id="owl-demo" class="owl-carousel owl-theme"><!--OWl Carousel-->
+	   @foreach($slides as $slide)
         <div class="item">
             <picture>
-                @if(\App::getLocale() == "ar")
-					@foreach($slide->getMedia('images') as $key => $image)
-						@if($image->hasCustomProperty('main-image')) 
-			                <source media="(max-width: 551px)" srcset="{{ $image->getUrl() }}">
-			                <source media="(max-width: 767px)" srcset="{{ $image->getUrl() }}">
-							<img src="{{ $image->getUrl() }}" alt="Home Slider">
-							@break
-						@endif
-					@endforeach				
-				@else
-					@foreach($slide->getMedia('images') as $key => $image)
-						@if(!$image->hasCustomProperty('main-image')) 
-		                <source media="(max-width: 551px)" srcset="{{ $image->getUrl() }}">
-		                <source media="(max-width: 767px)" srcset="{{ $image->getUrl() }}">
-							<img src="{{ $image->getUrl() }}" alt="Home Slider">
-							@break
-						@endif
-					@endforeach					
-				@endif
+					@foreach($slide->getMedia('main_image') as $key => $image)
+					    <img src="{{ $image->getUrl() }}" alt="Home Slider">
+					@endforeach
+                    @foreach($slide->getMedia('mobile_image') as $key => $image)
+                        <source media="(max-width: 551px)" srcset="{{ $image->getUrl() }}">
+                    @endforeach
+                    @foreach($slide->getMedia('tablet_image') as $key => $image)
+                        <source media="(max-width: 767px)" srcset="{{ $image->getUrl() }}">
+                    @endforeach
+                    
             </picture>
             <div class="container">
                 <div class="slider_content">
@@ -39,6 +30,6 @@
                 </div>
             </div>
         </div>
+	   @endforeach
     </div>
-	@endforeach
 </section>

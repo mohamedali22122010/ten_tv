@@ -7,7 +7,7 @@ return [
      */
   'fallback_locale' => 'en',
   'languages'=>[
-  		"en"=>"English",
+  		//"en"=>"English",
   		'ar'=>"Arabic",
 	]
 ];
