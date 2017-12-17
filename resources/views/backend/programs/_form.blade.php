@@ -63,6 +63,10 @@
             <input class="form-control" name="instagram_link" type="text" value="{{old('instagram_link',$program->instagram_link)}}" placeholder="" >
         </div>
 
+        <div class="form-group">
+            <label>{{trans('backend.Program Youtube Page')}}</label>
+            <input class="form-control" name="youtube_link" type="text" value="{{old('youtube_link',$program->youtube_link)}}" placeholder="" >
+        </div>
 
 		<div class="imagesBlock row">
             <ul>

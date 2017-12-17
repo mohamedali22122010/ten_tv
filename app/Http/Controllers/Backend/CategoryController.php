@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Category;
+use App\Jobs\RmoveMedia;
+use App\Jobs\AssociateMedia;
+use App\Jobs\RmoveTemp;
 
 class CategoryController extends Controller
 {
@@ -51,6 +54,12 @@ class CategoryController extends Controller
             $category->status = 0;
         }
 		$category->save();
+
+        // associate images to product
+        $this->dispatch(new AssociateMedia($category,$request->urls,'images'));
+        //remove temp files
+        $this->dispatch(new RmoveTemp($category->urls));
+
 		return redirect(route('category.index'));
     }
 
@@ -94,7 +103,13 @@ class CategoryController extends Controller
             $category->status = 0;
         }
         $category->save();
-
+        // removed deleted images
+        $this->dispatch(new RmoveMedia($category,$request->removedImages,'images'));
+        // add images 
+        $this->dispatch(new AssociateMedia($category,$request->urls,'images'));
+        //remove temp files
+        $this->dispatch(new RmoveTemp($request->urls));
+        
         return redirect(route('category.index'));
     }
 

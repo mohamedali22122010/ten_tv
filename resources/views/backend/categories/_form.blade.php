@@ -42,6 +42,26 @@
   	@endforeach
 	<div id="tab-general" class="tab-pane"  data-tab-index="{{$data_tab_index}}">
 
+		<div class="imagesBlock row">
+            <ul>
+                @foreach($category->getMedia('images') as $key => $image)
+                <li class="col-md-3">
+                	<div>
+                		<div class="actions">
+                			<a class="removeMedia" data-key="{{$key}}">X</a>
+            			</div>
+            			<img src="{{ $image->getUrl() }}"  alt="Image">
+        			</div>
+    			</li>
+                @endforeach
+            </ul>
+        </div>
+        <!-- imagesBlock -->
+		<label class="lowMargin"> <span>{{ trans('backend.Category Image') }}</span> </label>
+
+
+        <div class="dropzone form-group"></div>
+        
         <div class="form-group col-md-6">
 			<label>
 				<input class="minimal" name="status" type="checkbox" @if($category-> status) checked @endif> {{trans('backend.Set Active')}} 
@@ -56,5 +76,12 @@
 </div>
 <!-- formTabs -->
 @section('scripts')
+<script type="text/javascript">
 
+maxFiles = 1; // max images to upload
+ImageMustHasPrimary = false;
+ImageNotRequired = true;
+customFieldImage = "{{trans('backend.Primary')}}"
+
+</script>
 @endsection

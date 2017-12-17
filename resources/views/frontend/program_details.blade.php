@@ -34,6 +34,9 @@
                             @if($program->instagram_link)
                             <li><a href="{{$program->instagram_link}}" target="_blank" class="instagram" title=""><svg><use xlink:href="#instagram"></use></svg> </a></li>
                             @endif
+                            @if($program->youtube_link)
+                            <li><a href="{{$program->youtube_link}}" target="_blank" class="youtube" title=""><svg><use xlink:href="#youtube"></use></svg> </a></li>
+                            @endif
                         </ul>
                     </div>
                 </div><!--about-art-->

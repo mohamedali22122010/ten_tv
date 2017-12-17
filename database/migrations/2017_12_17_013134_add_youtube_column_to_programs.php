@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddSocialUrlToProgramsTable extends Migration
+class AddYoutubeColumnToPrograms extends Migration
 {
     /**
      * Run the migrations.
@@ -15,9 +15,7 @@ class AddSocialUrlToProgramsTable extends Migration
     {
         Schema::table('programs', function (Blueprint $table) {
             //
-            $table->string('facebook_link')->nullable();
-            $table->string('twitter_link')->nullable();
-            $table->string('instagram_link')->nullable();
+            $table->string('youtube_link')->nullable();
         });
     }
 
@@ -30,7 +28,7 @@ class AddSocialUrlToProgramsTable extends Migration
     {
         Schema::table('programs', function (Blueprint $table) {
             //
-            $table->dropColumn(['facebook_link','twitter_link','instagram_link']);
+            $table->dropColumn(['youtube_link']);
         });
     }
 }
