@@ -64,10 +64,21 @@ class FrontendController extends Controller
 		return view('frontend.index',compact('slides','rightPost','leftPost','soonPosts','currentShow','nextShow','upcommingShow'));
     }
 
+    public function search(Request $request)
+    {
+        $programs = Program::approved();
+        if ($request->input('search')) {
+            $programs = $programs->where('title', 'like', '%'.$request->input('search').'%');
+            $programs = $programs->OrWhere('description', 'like', '%'.$request->input('search').'%');
+        }
+        $programs = $programs->orderBy('id','desc')->get();
+        return view('frontend.programs',compact('programs'));
+    }
+
 	public function getShow($dayOfWeek,$is_current=false,$notInIds=[])
 	{
 		$programTime = ProgramTime::with(['program'=>function($query){
-			$query->where('status',1);
+			//$query->where('status',1);
 		}])->where('day',$dayOfWeek);
 		
 		if($is_current){

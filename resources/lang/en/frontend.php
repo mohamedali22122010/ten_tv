@@ -21,7 +21,9 @@ return [
     'Recent News'=>'Recent News',
     'Popular News'=>'Popular News',
     'eposides'=>'Program Eposides',
+    'full_eposides'=>'Full Eposides',
     'currently_shown'=>'Currently Shown',
     'next'=>'Next',
-    'follow_us_on'=>'Follow Us On'
+    'follow_us_on'=>'Follow Us On',
+    'special_episode'=>'Special Episodes',
 ];

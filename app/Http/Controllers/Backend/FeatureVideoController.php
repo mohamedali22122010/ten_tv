@@ -5,14 +5,14 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\ProgramEposides;
+use App\FeatureVideo;
 use App\Program;
 use Carbon\Carbon;
 use App\Jobs\RmoveMedia;
 use App\Jobs\AssociateMedia;
 use App\Jobs\RmoveTemp;
 
-class ProgramEposidesController extends BackendController
+class FeatureVideoController extends BackendController
 {
     /**
      * Display a listing of the resource.
@@ -21,8 +21,8 @@ class ProgramEposidesController extends BackendController
      */
     public function index()
     {
-        $eposides = ProgramEposides::orderBy('id','desc')->paginate(10);
-        return view('backend.eposides.index',compact('eposides'));
+        $videos = FeatureVideo::orderBy('is_home','desc')->orderBy('id','desc')->paginate(10);
+        return view('backend.videos.index',compact('videos'));
     }
 
     /**
@@ -32,9 +32,9 @@ class ProgramEposidesController extends BackendController
      */
     public function create()
     {
-        $eposide = new ProgramEposides;
+        $video = new FeatureVideo;
 		$programs = Program::approved()->get()->pluck('title','id')->sort()->toArray();
-        return view('backend.eposides.create',compact('eposide','programs'));
+        return view('backend.videos.create',compact('video','programs'));
     }
 
     /**
@@ -46,12 +46,16 @@ class ProgramEposidesController extends BackendController
     public function store(Request $request)
     {
         //
-        $eposide = new ProgramEposides;
-		$eposide->fill($request->except('_token'));
+        $video = new FeatureVideo;
+		$video->fill($request->except('_token'));
+		if($request->is_home){
+            $video->is_home = 1;
+        }else{
+            $video->is_home = 0;
+        }
+		$video->save();
 		
-		$eposide->save();
-		
-		return redirect(route('eposide.index'));
+		return redirect(route('video.index'));
     }
 
     /**
@@ -73,9 +77,9 @@ class ProgramEposidesController extends BackendController
      */
     public function edit($id)
     {
-        $eposide = ProgramEposides::findOrFail($id);
+        $video = FeatureVideo::findOrFail($id);
 		$programs = Program::approved()->get()->pluck('title','id')->sort()->toArray();
-        return view('backend.eposides.edit',compact('eposide','programs'));
+        return view('backend.videos.edit',compact('video','programs'));
     }
 
     /**
@@ -88,12 +92,16 @@ class ProgramEposidesController extends BackendController
     public function update(Request $request, $id)
     {
         //
-        $eposide = ProgramEposides::findOrFail($id);
-		$eposide->fill($request->except('_token'));
+        $video = FeatureVideo::findOrFail($id);
+		$video->fill($request->except('_token'));
+		if($request->is_home){
+            $video->is_home = 1;
+        }else{
+            $video->is_home = 0;
+        }
+		$video->save();
 		
-		$eposide->save();
-		
-		return redirect(route('eposide.index'));
+		return redirect(route('video.index'));
 		
     }
 
@@ -105,6 +113,6 @@ class ProgramEposidesController extends BackendController
      */
     public function destroy($id)
     {
-        return ProgramEposides::destroy($id);
+        return FeatureVideo::destroy($id);
     }
 }

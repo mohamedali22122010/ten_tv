@@ -33,6 +33,7 @@ Route::group(['prefix' => 'backend', 'namespace' => 'Backend','middleware'=>['au
 	Route::resource('category', 'CategoryController');
 	Route::resource('program', 'ProgramController');
 	Route::resource('eposide', 'ProgramEposidesController');
+	Route::resource('video', 'FeatureVideoController');
 	Route::resource('broadcast', 'ProgramProdcastController');	
 
 	Route::get('setting/index', array('as'=>'setting.index','uses'=>'SettingController@index'));

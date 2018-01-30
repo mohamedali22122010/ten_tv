@@ -55,23 +55,12 @@ class PostController extends BackendController
             $post->status = 0;
         }
 		
-		if($request->home_page_right){
-            $post->home_page_right = 1;
+		if($request->home_page){
+            $post->home_page = 1;
         }else{
-            $post->home_page_right = 0;
+            $post->home_page = 0;
         }
 		
-		if($request->home_page_left){
-			$post->home_page_left = 1;
-		}else{
-			$post->home_page_left = 0;
-		}
-		
-		if($request->home_page_soon){
-			$post->home_page_soon = 1;
-		}else{
-			$post->home_page_soon = 0;
-		}
 		$post->save();
 		// associate images to product
         $this->dispatch(new AssociateMedia($post,$request->urls,'images'));
@@ -124,23 +113,11 @@ class PostController extends BackendController
             $post->status = 0;
         }
 		
-		if($request->home_page_right){
-            $post->home_page_right = 1;
+		if($request->home_page){
+            $post->home_page = 1;
         }else{
-            $post->home_page_right = 0;
-        }
-		
-		if($request->home_page_left){
-			$post->home_page_left = 1;
-		}else{
-			$post->home_page_left = 0;
-		}
-		
-		if($request->home_page_soon){
-			$post->home_page_soon = 1;
-		}else{
-			$post->home_page_soon = 0;
-		}		
+            $post->home_page = 0;
+        }	
 		
 		$post->save();
 		// removed deleted images

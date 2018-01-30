@@ -19,6 +19,11 @@
 				<label>{{trans('backend.Program Description')}}</label>
 				<textarea class="form-control ckEditor" name="description[{{$language}}]" id="description-{{$language}}" placeholder="">{{old('description.'.$language,$program->getTranslation('description',$language))}}</textarea>
 			</div>
+
+            <div class="form-group">
+                <label>{{trans('backend.About Announcer')}}</label>
+                <textarea class="form-control ckEditor" name="about_announcer[{{$language}}]" id="about_announcer-{{$language}}" placeholder="">{{old('about_announcer.'.$language,$program->getTranslation('about_announcer',$language))}}</textarea>
+            </div>            
 						
 		    <div class="form-group">
 				<label>{{trans('backend.Program Show Text')}}</label>

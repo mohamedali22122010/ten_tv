@@ -3,7 +3,7 @@
 
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
-        <div class="user-panel">
+        <!--<div class="user-panel">
         <div class="pull-left image">
         	@if(auth()->user()->image)
 	          <img src="{{ auth()->user()->image }}" style="width: 50px;height: 50px;" class="img-circle" alt="User Image">
@@ -16,10 +16,10 @@
           <a href="#"><i class="fa fa-circle text-success"></i> {{trans('backend.Online')}}</a>
         </div>
       </div>
-	
+	-->
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
-            <li class="header">{{trans('backend.MAIN NAVIGATION')}}</li>
+            <!--<li class="header">{{trans('backend.MAIN NAVIGATION')}}</li>-->
             <!-- Optionally, you can add icons to the links -->
             @if(auth()->user()->role_id == 1 || auth()->user()->can('backend.home'))
 	            <li ><a href="{{route('backend.home')}}"> <i class="fa fa-pie-chart"></i> <span>{{trans('backend.Dashboard')}}</span></a></li>
@@ -47,6 +47,9 @@
             @endif
 			@if(auth()->user()->role_id == 1 || auth()->user()->can('eposide.index'))
 	            <li ><a href="{{route('eposide.index')}}"> <i class="fa fa-pie-chart"></i> <span>{{trans('backend.Program Eposide')}}</span></a></li>
+            @endif
+            @if(auth()->user()->role_id == 1 || auth()->user()->can('video.index'))
+                <li ><a href="{{route('video.index')}}"> <i class="fa fa-pie-chart"></i> <span>{{trans('backend.Program Featured Video')}}</span></a></li>
             @endif
 			@if(auth()->user()->role_id == 1 || auth()->user()->can('broadcast.index'))
 	            <li ><a href="{{route('broadcast.index')}}"> <i class="fa fa-pie-chart"></i> <span>{{trans('backend.Program Broadcast')}}</span></a></li>

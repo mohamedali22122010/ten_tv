@@ -17,7 +17,9 @@ return [
     'Recent News'=>'اخر الاخبار',
     'Popular News'=>'اهم الاخبار',
     'eposides'=>'حلقات البرنامج',
+    'full_eposides'=>'الحلقات الكاملة',
     'currently_shown'=>'يعرض الان',
     'next'=>'التالى',
-    'follow_us_on'=>'تابعونا على '
+    'follow_us_on'=>'تابعونا على ',
+    'special_episode'=>'مقاطع خاصة',
 ];

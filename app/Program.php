@@ -13,9 +13,9 @@ class Program extends Model implements HasMediaConversions
 {
 	use HasTranslations,HasMediaTrait,HasSlug;
 	
-    protected $fillable = ['title', 'description', 'show_text', 'repeate_text', 'show_time', 'repeate_time','facebook_link','twitter_link','instagram_link'];
+    protected $fillable = ['title', 'about_announcer', 'description', 'show_text', 'repeate_text', 'show_time', 'repeate_time','facebook_link','twitter_link','instagram_link', 'youtube_link'];
 	
-	public $translatable = ['title', 'description', 'show_text', 'repeate_text'];
+	public $translatable = ['title', 'about_announcer', 'description', 'show_text', 'repeate_text'];
 	
 	protected $table = 'programs';
 				

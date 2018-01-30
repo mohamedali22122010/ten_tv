@@ -49,7 +49,7 @@
                     </article>
                 </div>
                 <div class="Program-data">
-                    <h2>{{trans('frontend.eposides')}}</h2>
+                    <h2>{{trans('frontend.full_eposides')}}</h2>
                     <div class="Program-videos">
                         @foreach($eposides as $eposide)
                         <div class="video-item">
