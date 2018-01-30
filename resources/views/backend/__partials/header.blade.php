@@ -2,7 +2,9 @@
 <header class="main-header">
 
     <!-- Logo -->
-    <a href="{{ route('backend.home') }}" class="logo"><b>{{trans('backend.Admin')}}</b> </a>
+    <a href="{{ route('backend.home') }}" class="logo">
+		<img src="http://ten.tv/bower_components/AdminLTE/dist/css/skins/logo.png" alt="">
+		  </a>
 
     <!-- Header Navbar -->
     <nav class="navbar navbar-static-top" role="navigation">

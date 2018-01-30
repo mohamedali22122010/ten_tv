@@ -283,16 +283,15 @@ header .container .header {
   box-sizing: border-box;
 }
 header .container .header .header-left {
-  width: 21.3%;
 }
 header .container .header .header-left ul {
   display: flex;
-  justify-content: space-between;
-}
+ }
 header .container .header .header-left ul li a {
   display: flex;
   justify-content: center;
   align-items: center;
+	    margin: 0 5px;
   width: 25px;
   height: 25px;
   border-radius: 50%;

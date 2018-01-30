@@ -283,18 +283,17 @@ header .container .header {
   box-sizing: border-box;
 }
 header .container .header .header-left {
-  width: 21.3%;
-}
+ }
 header .container .header .header-left ul {
   display: flex;
-  justify-content: space-between;
-}
+ }
 header .container .header .header-left ul li a {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 25px;
   height: 25px;
+	    margin: 0 5px;
   border-radius: 50%;
   background-color: #99a9b5;
   -webkit-transition: all 0.3s ease-in;
@@ -762,6 +761,8 @@ header .container .header .header-right .nav-menu li .nav-dropdown li:hover a {
   display: block;
   margin: 15px 0;
   color: #009ada;
+	    line-height: 2;
+    margin-top: 0;
   font-size: 18px;
   font-weight: 600;
   -webkit-transition: all 0.3s ease-in;

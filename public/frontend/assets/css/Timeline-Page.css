@@ -291,13 +291,13 @@ header .container .header .header-left {
 }
 header .container .header .header-left ul {
   display: flex;
-  justify-content: space-between;
 }
 header .container .header .header-left ul li a {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 25px;
+	    margin: 0 5px;
   height: 25px;
   border-radius: 50%;
   background-color: #99a9b5;
@@ -736,6 +736,7 @@ header .container .header .header-right .nav-menu li .nav-dropdown li:hover a {
 }
 .Broadcast {
   background-color: #ececec;
+	height: 100vh
 }
 .Broadcast .container {
   padding: 50px 0 100px 0;

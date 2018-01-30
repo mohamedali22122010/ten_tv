@@ -283,17 +283,16 @@ header .container .header {
   box-sizing: border-box;
 }
 header .container .header .header-left {
-  width: 21.3%;
-}
+ }
 header .container .header .header-left ul {
   display: flex;
-  justify-content: space-between;
-}
+ }
 header .container .header .header-left ul li a {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 25px;
+	    margin: 0 5px;
   height: 25px;
   border-radius: 50%;
   background-color: #99a9b5;

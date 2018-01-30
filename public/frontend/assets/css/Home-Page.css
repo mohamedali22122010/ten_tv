@@ -289,17 +289,17 @@ header .container .header {
   box-sizing: border-box;
 }
 header .container .header .header-left {
-  width: 21.3%;
-}
+ }
 header .container .header .header-left ul {
   display: flex;
-  justify-content: space-between;
+ /* justify-content: space-between;*/
 }
 header .container .header .header-left ul li a {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 25px;
+	margin: 0 5px;
   height: 25px;
   border-radius: 50%;
   background-color: #99a9b5;
@@ -924,6 +924,7 @@ header .container .header .header-right .nav-menu li .nav-dropdown li:hover a {
 .News .container h3 {
   color: #009ada;
   font-size: 18px;
+	line-height: 2;
   font-weight: 600;
   margin: 40px 0 20px 0;
   padding-right: 20px;
@@ -988,8 +989,8 @@ header .container .header .header-right .nav-menu li .nav-dropdown li:hover a {
 }
 .Soon h2 {
   text-align: right;
-  margin: 0 5% 30px 0;
-  font-size: 24px;
+  margin: 0;
+  font-size: 24px;margin-bottom: 25px;
   font-weight: 600;
   color: #009ada;
 }
@@ -999,7 +1000,9 @@ header .container .header .header-right .nav-menu li .nav-dropdown li:hover a {
   justify-content: space-around;
 }
 .Soon .container #owl-demo2 .item .item-right {
-  width: 47%;
+      width: 50%;
+    text-align: right;
+    direction: rtl;
 }
 .Soon .container #owl-demo2 .item .item-right img {
   max-width: 100%;
@@ -1163,7 +1166,7 @@ header .container .header .header-right .nav-menu li .nav-dropdown li:hover a {
 
 /******about*********/
 .about {
-  background-color: #ececec;
+  background-color: #fff;
 }
 .about .container {
   display: flex;
@@ -1234,6 +1237,7 @@ header .container .header .header-right .nav-menu li .nav-dropdown li:hover a {
 .about .container .about-right .about-buttons button:hover a {
   color: white;
 }
+.slider-logo,.slider-data{ display: none;}
 
 @media (min-width: 992px) and (max-width: 1200px) {
   /*********Slider***********/

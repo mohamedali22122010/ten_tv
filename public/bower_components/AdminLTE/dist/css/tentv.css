@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i');
+body{
+	font-family: 'Roboto', sans-serif;
+}
+.ten-tev .main-header{
+	background: #212331;
+}
+.main-header .logo{     text-align: left;
+    height: auto;
+    line-height: 1;
+    padding: 0;
+}
+.ten-tev .navbar{
+	    background-color: #3d4754;
+    background-image: -moz-linear-gradient(top, #3d4754 19%, #465261 44%, #45515f 100%);
+    background-image: linear-gradient(top, #3d4754 19%, #465261 44%, #45515f 100%);
+    background-image: -webkit-linear-gradient(top, #3d4754 19%, #465261 44%, #45515f 100%);
+    background-image: -o-linear-gradient(top, #3d4754 19%, #465261 44%, #45515f 100%);
+    background-image: -ms-linear-gradient(top, #3d4754 19%, #465261 44%, #45515f 100%);
+}
+.main-sidebar, .left-side{
+	    background: #465261
+}
+.sidebar-menu i{ display: none;}
+.sidebar-menu li>a{     color: #cad9df;
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 0px;
+}
+.sidebar-menu li>a:hover{ background: #536171;}
+.sidebar-menu li{
+	    border-bottom: 1px solid #536171;
+}
+.user-menu  a{
+	padding-top: 5px !important;
+	padding-bottom: 3px !important;
+	line-height: 42px !important;
+	color: #fff;    overflow: hidden;
+	    background: #536171 !important; 
+}
+.navbar-nav>.user-menu .user-image{
+	float: left;
+    width: 42px;
+    height:  42px   ;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-top: -2px;
+    padding: 2px;
+    background: #fff;
+}
+.icon{ font-style: normal !important}

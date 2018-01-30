@@ -14,6 +14,7 @@
 
     <!-- CSS -->
     @yield('page_style')
+	<link type="text/css" rel="stylesheet" href="{{ asset('frontend/assets/css/rtl-layout.css') }}">
 </head>
 <body>
 	

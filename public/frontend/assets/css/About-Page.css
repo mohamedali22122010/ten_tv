@@ -283,17 +283,16 @@ header .container .header {
   box-sizing: border-box;
 }
 header .container .header .header-left {
-  width: 21.3%;
 }
 header .container .header .header-left ul {
   display: flex;
-  justify-content: space-between;
-}
+ }
 header .container .header .header-left ul li a {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 25px;
+	    margin: 0 5px;
   height: 25px;
   border-radius: 50%;
   background-color: #99a9b5;
@@ -742,12 +741,17 @@ header .container .header .header-right .nav-menu li .nav-dropdown li:hover a {
   text-transform: uppercase;
   font-size: 26px;
 }
+.image{
+	    width: 35%;
+    overflow: hidden;
+}
+.image img{ max-width: 100%;}
 .entertainment .container p.title {
   font-family: 'Cairo', sans-serif;
   line-height: 2em;
   text-align: center;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 0;
   color: #3c3950;
 }
 .entertainment .container .entertainment-content {
@@ -765,7 +769,7 @@ header .container .header .header-right .nav-menu li .nav-dropdown li:hover a {
   font-weight: 600;
 }
 .entertainment .container .entertainment-content .entertainment-left {
-  width: 48.5%;
+  width: 60%;
 }
 .entertainment .container .entertainment-content .entertainment-left .highlightParagraph {
   background-color: #212331;
