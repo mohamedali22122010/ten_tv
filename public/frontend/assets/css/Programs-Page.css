@@ -225,6 +225,14 @@ body {
   box-sizing: border-box;
 }
 
+.about-announcer{
+	overflow: hidden;
+	height: auto;
+	width: 100%;
+	padding: 30px 15px;
+	background: #eee;
+	margin-top: 30px;
+}
 ul {
   padding-left: 0;
   margin: 0;
@@ -877,6 +885,7 @@ header .container .header .header-right .nav-menu li .nav-dropdown li:hover a {
   width: 20px;
   fill: white;
 }
+
 .contact .container .contact-detaills .details-item h2 {
   font-size: 18px;
   text-transform: uppercase;

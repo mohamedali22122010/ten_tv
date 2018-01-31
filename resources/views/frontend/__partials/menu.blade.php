@@ -4,7 +4,9 @@
         <div class="Menu"><!--Menu-->
             <div class="Menu-left"><!--Menu-left-->
                 <div class="search">
-                    <input type="text" class="SearchInput" placeholder="بحث" >
+                    <form action="{{url('search')}}" method="get">
+                        <input type="text" name="search" value="{{Request::get('search')}}" class="SearchInput" placeholder="بحث" >                    
+                    </form>
                     <div class="icon">
                         <input type="submit" class="SearchButton" value="">
                         <div class="SearchIcon">

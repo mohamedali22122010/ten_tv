@@ -461,7 +461,49 @@ header .container .header .header-right .nav-menu li .nav-dropdown li:hover {
 header .container .header .header-right .nav-menu li .nav-dropdown li:hover a {
   color: black;
 }
-
+.video-item{
+	overflow: hidden;
+	height: auto;
+	width: 100%;
+	display: block;
+}
+.video-content{
+		overflow: hidden;
+	height: auto;
+	width: 100%;
+	display: block;
+}
+.video-content img{ max-width: 100%;
+display: block;
+}
+ .video-content  a {
+    outline: 0;
+    font-size: 14px;
+    line-height: 2;
+	     position: relative;
+}
+ .Icon {
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	     width: 50px;
+    height: 50px;
+}
+.Icon svg{
+	width: 50px;
+	height: 50px;
+}
+.pro-fe .video-item{
+	    margin-bottom: 10px;
+}
+.pro-fe .row .video-item:last-child{
+	margin-bottom: 0
+}
 /*********Nav**********/
 .Nav {
   background: #212331;
@@ -880,8 +922,45 @@ line-height: 2.5 !important;
     line-height: 2;
 }
 .Program-details .container .blog-details .Program-time {
-  width: 30%;
+  
 }
+.row-left{
+	width: 30%;
+}
+.about-announcer{
+	    overflow: hidden;
+    height: auto;
+    width: 100%;
+    display: block;
+    background: #fff;
+    margin-top: 15px;
+    padding: 20px;
+	padding-bottom: 30px;
+    box-sizing: border-box;
+}
+.about-announcer h3,.pro-fe h3{
+	border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+}
+.about-announcer article{
+	    font-family: cairo;
+    line-height: 2;
+    color: #959595;
+	
+}
+.pro-fe{
+	  overflow: hidden;
+    height: auto;
+    width: 100%;
+    display: block;
+    background: #fff;
+    margin-top: 15px;
+    padding: 20px;
+	padding-bottom: 30px;
+    box-sizing: border-box;
+		
+}
+ 
 .Program-details .container .blog-details .Program-time h2 {
   font-size: 24px;
   text-transform: capitalize;
@@ -892,7 +971,9 @@ line-height: 2.5 !important;
     font-size: 18px !important;
     line-height: 2;
 }
-.text ul{ list-style: none !important}
+.text ul{ list-style: none !important;
+padding-right: 0;
+}
 .text ul li {list-style-type: none !important;}
 .Program-details .container .blog-details .Program-time .Times {
      background-color: #009ada;

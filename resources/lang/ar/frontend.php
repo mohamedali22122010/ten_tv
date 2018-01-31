@@ -22,4 +22,6 @@ return [
     'next'=>'التالى',
     'follow_us_on'=>'تابعونا على ',
     'special_episode'=>'مقاطع خاصة',
+    'about announcer'=>'عن المذيع',
+    'featured video'=>'مقاطع مميزة',
 ];

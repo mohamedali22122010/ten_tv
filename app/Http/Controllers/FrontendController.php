@@ -15,6 +15,7 @@ use App\Program;
 use App\ProgramEposides;
 use App\User;
 use App\Slider;
+use App\FeatureVideo;
 use App\Category;
 use Illuminate\Support\Facades\Session;
 
@@ -42,8 +43,8 @@ class FrontendController extends Controller
      */
     public function index()
     {
-    	$rightPost = Post::lightSelection()->approved()->where('home_page_right',1)->orderBy('id','desc')->first();
-    	$leftPost = Post::lightSelection()->approved()->where('home_page_left',1)->orderBy('id','desc')->first();
+        $posts = Post::lightSelection()->approved()->where('home_page',1)->orderBy('id','desc')->limit(3)->get();
+    	$videos = FeatureVideo::where('is_home',1)->orderBy('id','desc')->limit(6)->get();
     	$soonPosts = Post::lightSelection()->approved()->where('home_page_soon',1)->orderBy('id','desc')->limit(3)->get();
 		$slides = Slider::where('active','=',1)->get();
 		$dayOfWeek = Carbon::now()->dayOfWeek;
@@ -61,15 +62,19 @@ class FrontendController extends Controller
 			$upcommingShow = $this->getShow($dayOfWeek+1);			
 		}
 				
-		return view('frontend.index',compact('slides','rightPost','leftPost','soonPosts','currentShow','nextShow','upcommingShow'));
+		return view('frontend.index',compact('slides','posts', 'videos', 'soonPosts','currentShow','nextShow','upcommingShow'));
     }
 
     public function search(Request $request)
     {
         $programs = Program::approved();
         if ($request->input('search')) {
-            $programs = $programs->where('title', 'like', '%'.$request->input('search').'%');
-            $programs = $programs->OrWhere('description', 'like', '%'.$request->input('search').'%');
+            /*$key = json_encode($request->input('search'));
+            $key = str_replace("\u","'\\\\\\\\u'",$key);
+            $key = str_replace("'","",$key);*/
+            //dd($key);
+            $programs = $programs->where('title', 'like', "%".$key."%");
+            $programs = $programs->OrWhere('description', 'like', "%".$key."%");
         }
         $programs = $programs->orderBy('id','desc')->get();
         return view('frontend.programs',compact('programs'));
@@ -130,7 +135,8 @@ class FrontendController extends Controller
 	{
 		$program = Program::approved()->where('slug',$slug)->firstOrFail();
 		$eposides = ProgramEposides::where('program_id',$program->id)->get();
-		return view('frontend.program_details',compact('program','eposides'));		
+        $videos = FeatureVideo::where('program_id',$program->id)->get();
+		return view('frontend.program_details',compact('program','eposides','videos'));		
 	}
 	
 	public function Broadcast()

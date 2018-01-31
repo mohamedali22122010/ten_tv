@@ -69,14 +69,40 @@
                     </div>
                 </div>
             </div>
-            <div class="Program-time">
-                <h2>{{trans('frontend.broadcasttime')}}</h2>
-                <div class="Times">
-                    <p>{{$program->show_text}}</p>
-                    <span>{{$program->show_time}}</span>
-                    <p>{{trans('frontend.cairoTime')}}</p>
-                </div>
-            </div>
+			
+			<div class="row-left">
+                <div class="Program-time">
+                    <h2>{{trans('frontend.broadcasttime')}}</h2>
+                    <div class="Times">
+                        <p>{{$program->show_text}}</p>
+                        <span>{{$program->show_time}}</span>
+                        <p>{{trans('frontend.cairoTime')}}</p>
+                    </div>
+                </div><!--Program-time-->
+                @if($program->about_announcer)
+    			    <div class="about-announcer">
+        				<h3>{{trans('frontend.about announcer')}}</h3>
+        				<article>{!! $program->about_announcer !!}</article>
+        			</div><!--about-announcer-->
+				@endif
+                @if(!$videos->isEmpty())
+                    <div class="pro-fe">
+    					<h3>{{trans('frontend.featured video')}}</h3>
+                        <div class="row">
+                            @foreach($videos as $video)
+                            <div class="video-item">
+                                <div class="video-content">
+                                    <img src="https://img.youtube.com/vi/{{$video->getYoutubeVedioIdFromUrl($video->link)}}/mqdefault.jpg" alt="">
+                                </div>
+                                <a href="{{$video->link}}" data-fancybox="" data-caption="My caption">
+                                    <h4>{{$video->title}}</h4>
+                                </a>
+                            </div><!--video-item-->
+                            @endforeach
+                        </div><!--row-->
+    				</div><!--pro-fe-->
+                @endif				
+			</div><!--row-left-->
         </div>
     </div>
 </section>

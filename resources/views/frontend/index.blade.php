@@ -51,57 +51,56 @@
 	        </div><!--Time-right-->
 	    </div><!--Time-->
 	</section>
-	<!--News-->
-	<section class="News">
-	    <hr>
-	    <div class="container"><!--Container-->
-	        <div class="News-Right"><!--News-right-->
-	        	@if($rightPost)
-	        	
-				@if($rightPost->type == 2)
-	        	<div class="News-video">
-		            <a href="{{$rightPost->link}}" data-fancybox data-caption="My caption">
-		                <img src="{{$rightPost->getMedia('images')->first()?$rightPost->getMedia('images')->first()->getUrl():''}}" alt="" />
-		                <div class="Icon">
-			                <svg><use xlink:href="#play"></use></svg>
-			            </div>
-		            </a>
-	            </div>
-	            @elseif($rightPost->type == 1)
-	                <img src="{{$rightPost->getMedia('images')->first()?$rightPost->getMedia('images')->first()->getUrl():''}}" alt="" />
-	            @endif
-	            <div>
-	                <h3>{{$rightPost->title}}</h3>
-	                <p>{{$rightPost->description}}</p>
-	            </div>
-	            @endif
-	        </div><!--News-right-->
-	        <div class="News-Left"><!--News-Left-->
-	        	@if($leftPost)
-		        	@if($leftPost->type == 2)
-		        	<div class="News-video">
-			            <a href="{{$leftPost->link}}" data-fancybox data-caption="My caption">
-			                <img src="{{$leftPost->getMedia('images')->first()?$leftPost->getMedia('images')->first()->getUrl():''}}" alt="" />
-			                <div class="Icon">
-				                <svg><use xlink:href="#play"></use></svg>
-				            </div>
-			            </a>
-		            </div>
-		            @elseif($leftPost->type == 1)
-		                <img src="{{$leftPost->getMedia('images')->first()?$leftPost->getMedia('images')->first()->getUrl():''}}" alt="" />
-		            @endif
-		            <div>
-						<h3>{{$leftPost->title}}</h3>
-		                <p>{{$leftPost->description}}</p>
-		            </div>
-		            <a href="#"></a>
-	            @endif
-	        </div><!--News-Left-->
-	    </div><!--Conatiner-->
+
+	
+	<section class="row-news">
+		<div class="container">
+			@if($posts)
+				<div class="row">
+		            @foreach($posts as $post)
+					<div class="col">
+						<div class="container-news">
+							<div class="image-div">
+								<a href="{{url('news_detail',$post->slug)}}"><img src="{{$post->getMedia('images')->first()?$post->getMedia('images')->first()->getUrl():''}}" alt=""/></a>
+							</div><!--image-div-->
+							<div class="dev-details">
+								<h2><a href="{{url('news_detail',$post->slug)}}">{{$post->title}}</a></h2>
+								<article>{{ str_limit($post->description,70,'...')}}</article>
+							</div><!--dev-details-->
+						</div><!--container-news-->
+							
+					</div><!--col-->
+					@endforeach					
+				</div>
+			@endif
+		</div><!--container-->
+	</section><!--row-news-->
+	
+	<section class="dark-area">
+		<div class="container">
+			@if($videos)
+			<div class="row">
+				@foreach($videos as $video)
+				<div class="col-md-2">
+					<div class="container-vid">
+						<img src="https://img.youtube.com/vi/{{$video->getYoutubeVedioIdFromUrl($video->link)}}/mqdefault.jpg" alt=""/>
+	 				    <a href="{{$video->link}}">{{$video->title}}</a>
+	 				</div><!--container-vid-->
+				</div><!--col-->
+				@endforeach
+			</div><!--row-->
+			@endif
+		</div>
 	</section>
+
 	<!--Soon-->
 	<section class="Soon">
-        <h2>{{ trans('frontend.soon on ten tv') }}</h2>
+		<div class="title">
+			<div class="container">
+				<h2>{{ trans('frontend.soon on ten tv') }}</h2>
+			</div>
+		</div>
+        
         @if($soonPosts)
 	    <div class="container"><!--Container-->
 	    	
@@ -150,13 +149,18 @@
 	            <img src="{{ asset('frontend/assets/images/logo.gif') }}">
 	        </div><!--about-left-->
 	        <div class="about-right"><!--about-right-->
-	            <h2>شبكة قناة التحريرللأنتاج الفنى والقنوات الفضائيه</h2>
-	            <p>لكن لا بد أن أوضح لك أن كل هذه الأفكار المغلوطة حول استنكار  النشوة وتمجيد الألم نشأت بالفعل، وسأعرض لك التفاصيل لتكتشف حقيقة وأساس تلك السعادة البشرية، فلا أحد يرفض أو يكره أو يتجنب الشعور بالسعادة، ولكن بفضل هؤلاء الأشخاص الذين لا يدركون بأن السعادة لا بد أن نستشعرها بصورة أكثر عقلانية ومنطقية فيعرضهم هذا لمواجهة الظروف الأليمة، وأكرر بأنه لا يوجد من يرغب في الحب ونيل المنال ويتلذذ بالآلام، الألم هو الألم ولكن نتيجة لظروف ما قد تكمن السعاده فيما نتحمله من كد وأسي.</p>
-	            <div class="about-buttons">
+	            <h2>محطة التحرير للإنتاج الاعلامى والقنوات الفضائية ش.م.م. </h2>
+	           <p>
+				قناة مصرية الهوي والهوية، شاملة وجامعة لكل الاّراء والأفكار والتوجهات التنويرية، تقدم اعلاما سماته الموضوعية والمهنية وبشكل جذاب ومشوق وفق احدث التقنيات الفنية ..
+تعمل القناة على تقديم "الاعلام البديل" الذي يرتكز علي محاور التنوير وخلق حالة من الوعي العام كما تجمع فى محتواها بين توصيل الحقائق والترفيه لمختلف أطياف المشاهدين. 
+كما تهدف القناة الي خلق ذراع أكاديمية للارتقاء بمستوي العاملين بها وتقديم الدعم التدريبي لكافة الجهات ذات  <br/>الصِّلة بصناعة الاعلام 
+قناة TeN هي قناة كل المصريين
+</p>
+	           <!-- <div class="about-buttons">
 	                <button><a href="#">الهيكل الأداري</a></button>
 	                <button><a href="#">نبذة تاريخية</a></button>
 	                <button><a href="#">مجلس الإدارة</a></button>
-	            </div>
+	            </div>-->
 	        </div><!--about-right-->
 	
 	    </div><!--container-->

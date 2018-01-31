@@ -47,6 +47,7 @@ Route::group(['middleware'=>['frontend','web']],function(){
 	Route::get('register/verify/{confirmation_code}','Auth\RegisterController@confirmCode');
 	
 	Route::get('/',['as'=>'home','uses'=>'FrontendController@index']);
+	Route::get('/search', 'FrontendController@search');
 	Route::get('/home', 'FrontendController@index');
 	Route::get('/about', 'FrontendController@about');
 	Route::get('/live', 'FrontendController@live');
