@@ -52,4 +52,15 @@ class Program extends Model implements HasMediaConversions
             ->generateSlugsFrom('title')
             ->saveSlugsTo('slug');
     }
+
+    /**
+     * Encode the given value as JSON.
+     *
+     * @param  mixed  $value
+     * @return string
+     */
+    protected function asJson($value)
+    {
+        return json_encode($value,JSON_UNESCAPED_UNICODE);
+    }
 }

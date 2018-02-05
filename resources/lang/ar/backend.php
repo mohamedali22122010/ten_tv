@@ -186,6 +186,7 @@ return [
     'Set At Home Page'=>'Set At Home Page', 
     'In Home'=>'In Home', 
     'Not Home'=>'Not Home', 
-    ''=>'', 
+    'Create New Broadcast '=>'Create New Broadcast ', 
+    'Show Name'=>'Show Name', 
     ''=>'', 
 ];

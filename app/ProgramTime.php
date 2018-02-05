@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProgramTime extends Model
 {
-    protected $fillable = ['day', 'program_id', 'show_at' ];
+    protected $fillable = ['day', 'program_id', 'program_name', 'show_at' ];
 	
 	protected $table = 'program_times';
 	

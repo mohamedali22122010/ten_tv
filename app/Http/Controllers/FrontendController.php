@@ -69,8 +69,8 @@ class FrontendController extends Controller
     {
         $programs = Program::approved();
         if ($request->input('search')) {
-            /*$key = json_encode($request->input('search'));
-            $key = str_replace("\u","'\\\\\\\\u'",$key);
+            $key = $request->input('search');
+            /*$key = str_replace("\u","'\\\\\\\\u'",$key);
             $key = str_replace("'","",$key);*/
             //dd($key);
             $programs = $programs->where('title', 'like', "%".$key."%");

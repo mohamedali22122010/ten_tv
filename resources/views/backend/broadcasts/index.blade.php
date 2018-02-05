@@ -41,7 +41,7 @@
 									<input class="bulk-action-checkbox" name="checkbox" type="checkbox" data-id="{{$broadcast->id}}" data-delete="{{ route('broadcast.destroy',$broadcast->id) }}"  data-csrf='{{ csrf_token() }}' >
 								</td>
 								<td>{{$broadcast->day_name}}</td>
-								<td>{{$broadcast->program->title}}</td>
+								<td>{{$broadcast->program?$broadcast->program->title:"Others"}}</td>
 								<td>{{$broadcast->show_at}}</td>
 								<td> 
 									@if($broadcast->repeate == 1)

@@ -30,21 +30,21 @@
 	        <div class="Time-right"><!--Time-right-->
 	        	@if($currentShow)
 	            <div class="Time-item">
-	                <h4>{{$currentShow->program->title}}</h4>
+	                <h4>{{$currentShow->program?$currentShow->program->title:$currentShow->program_name}}</h4>
 	                <p>{{$currentShow->show_at}}</p>
 	                <button>{{trans('frontend.currently_shown')}}</button>
 	            </div>
 	            @endif
 	            @if($nextShow)
 	            <div class="Time-item">
-	                <h4>{{$nextShow->program->title}}</h4>
+	                <h4>{{$nextShow->program?$nextShow->program->title:$nextShow->program_name}}</h4>
 	                <p>{{$nextShow->show_at}}</p>
 	                <button>{{trans('frontend.next')}}</button>
 	            </div>
 	            @endif
 	            @if($upcommingShow)
 	            <div class="Time-item">
-	                <h4>{{$upcommingShow->program->title}}</h4>
+	                <h4>{{$upcommingShow->program?$upcommingShow->program->title:$upcommingShow->program_name}}</h4>	            
 	                <p>{{$upcommingShow->show_at}}</p>
 	            </div>
 	            @endif
@@ -81,12 +81,14 @@
 			@if($videos)
 			<div class="row">
 				@foreach($videos as $video)
-				<div class="col-md-2">
-					<div class="container-vid">
-						<img src="https://img.youtube.com/vi/{{$video->getYoutubeVedioIdFromUrl($video->link)}}/mqdefault.jpg" alt=""/>
-	 				    <a href="{{$video->link}}">{{$video->title}}</a>
-	 				</div><!--container-vid-->
-				</div><!--col-->
+					@if($video->link)
+						<div class="col-md-2">
+							<div class="container-vid">
+								<img src="https://img.youtube.com/vi/{{$video->getYoutubeVedioIdFromUrl($video->link)}}/mqdefault.jpg" alt=""/>
+			 				    <a href="{{$video->link}}">{{$video->title}}</a>
+			 				</div><!--container-vid-->
+						</div><!--col-->
+					@endif
 				@endforeach
 			</div><!--row-->
 			@endif

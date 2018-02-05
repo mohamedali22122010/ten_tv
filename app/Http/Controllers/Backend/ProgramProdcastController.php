@@ -31,7 +31,9 @@ class ProgramProdcastController extends BackendController
     public function create()
     {
         $broadcast = new ProgramTime;
+
 		$programs = Program::approved()->get()->pluck('title','id')->sort()->toArray();
+        $programs['0'] = "Others";
         return view('backend.broadcasts.create',compact('broadcast','programs'));
     }
 
@@ -51,6 +53,9 @@ class ProgramProdcastController extends BackendController
 			})
 	    ]);
 		$broadcast->fill($request->except('_token'));
+        if($request->program_id == 0){
+            $broadcast->program_id = null;
+        }
 		if($request->repeate){
             $broadcast->repeate = 1;
         }else{
@@ -82,6 +87,7 @@ class ProgramProdcastController extends BackendController
     {
         $broadcast = ProgramTime::findOrFail($id);
 		$programs = Program::approved()->get()->pluck('title','id')->sort()->toArray();
+        $programs['0'] = "Others";
         return view('backend.broadcasts.edit',compact('broadcast','programs'));
     }
 
@@ -102,6 +108,9 @@ class ProgramProdcastController extends BackendController
 			})
 	    ]);
 	    $broadcast->fill($request->except('_token'));
+        if($request->program_id == 0){
+            $broadcast->program_id = null;
+        }
 		if($request->repeate){
             $broadcast->repeate = 1;
         }else{

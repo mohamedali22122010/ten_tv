@@ -4,13 +4,18 @@
 
 		<div class="form-group ">
         	<label> {{trans('backend.Program')}} </label>
-            <select class="form-control" data-parsley-required="true" name="program_id">
+            <select id="program_id" class="form-control" data-parsley-required="true" name="program_id">
                 @if($programs && !empty($programs))
                     @foreach($programs as $id=>$value)
                     <option value="{{$id}}" @if($broadcast->program_id == $id) selected @endif >{{$value}}</option>
                     @endforeach
                 @endif
             </select>
+        </div>
+        
+        <div id="program_name" class="form-group" style="display: none">
+            <label> {{trans('backend.Show Name')}} </label>
+            <input class="form-control" name="program_name" type="text" value="{{old('program_name',$broadcast->program_name)}}" placeholder="" >
         </div>
         
 		<div class="form-group ">
@@ -42,3 +47,22 @@
 	</div>
 </div>
 <!-- formTabs -->
+@section('scripts')
+<script type="text/javascript">
+program_id = $("#program_id").val();
+if(program_id == 0){
+    $("#program_name").show();
+}else{
+    $("#program_name").hide();
+}
+$("#program_id").change(function(e){
+    program_id = $(this).val();
+    if(program_id == 0){
+        $("#program_name").show();
+    }else{
+        $("#program_name").hide();
+    }
+
+});
+</script>
+@endsection
