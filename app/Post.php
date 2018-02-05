@@ -47,7 +47,7 @@ class Post extends Model implements HasMediaConversions
 	
 	public function scopeLightSelection($query)
     {
-        return $query->select('id', 'link','title', 'type', 'description' , 'home_page_right', 'home_page_left' ,'home_page_soon');
+        return $query->select('id', 'link','title', 'slug', 'type', 'description' , 'home_page_right', 'home_page_left' ,'home_page_soon');
     }	
 	 /*
      * Add Images sizes and filters here

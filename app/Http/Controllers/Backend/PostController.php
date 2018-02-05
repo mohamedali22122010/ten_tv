@@ -60,6 +60,12 @@ class PostController extends BackendController
         }else{
             $post->home_page = 0;
         }
+
+        if($request->home_page_soon){
+           $post->home_page_soon = 1;
+        }else{
+           $post->home_page_soon = 0;
+        }
 		
 		$post->save();
 		// associate images to product
@@ -118,6 +124,11 @@ class PostController extends BackendController
         }else{
             $post->home_page = 0;
         }	
+        if($request->home_page_soon){
+           $post->home_page_soon = 1;
+        }else{
+           $post->home_page_soon = 0;
+        }
 		
 		$post->save();
 		// removed deleted images

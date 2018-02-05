@@ -13,7 +13,7 @@ class Program extends Model implements HasMediaConversions
 {
 	use HasTranslations,HasMediaTrait,HasSlug;
 	
-    protected $fillable = ['title', 'about_announcer', 'description', 'show_text', 'repeate_text', 'show_time', 'repeate_time','facebook_link','twitter_link','instagram_link', 'youtube_link'];
+    protected $fillable = ['title', 'about_announcer', 'description', 'show_text', 'repeate_text', 'show_time', 'repeate_time','facebook_link','twitter_link','instagram_link', 'youtube_link' , 'ordering'];
 	
 	public $translatable = ['title', 'about_announcer', 'description', 'show_text', 'repeate_text'];
 	

@@ -22,7 +22,7 @@
 
             <div class="form-group">
                 <label>{{trans('backend.About Announcer')}}</label>
-                <textarea class="form-control ckEditor" name="about_announcer[{{$language}}]" id="about_announcer-{{$language}}" placeholder="">{{old('about_announcer.'.$language,$program->getTranslation('about_announcer',$language))}}</textarea>
+                <textarea rows="10" class="form-control" name="about_announcer[{{$language}}]" id="about_announcer-{{$language}}" placeholder="">{{old('about_announcer.'.$language,$program->getTranslation('about_announcer',$language))}}</textarea>
             </div>            
 						
 		    <div class="form-group">
@@ -44,6 +44,11 @@
 	   						
 		
 		<div class="form-group">
+            <label>{{trans('backend.Program Order')}}</label>
+            <input class="form-control" name="ordering" type="text" value="{{old('ordering',$program->ordering)}}" placeholder="" >
+        </div>
+
+        <div class="form-group">
 			<label>{{trans('backend.Program Show Time')}}</label>
 			<input class="form-control" name="show_time" type="text" value="{{old('show_time',$program->show_time)}}" placeholder="" >
 		</div>

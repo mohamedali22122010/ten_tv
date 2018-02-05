@@ -82,7 +82,7 @@
                 @if($program->about_announcer)
     			    <div class="about-announcer">
         				<h3>{{trans('frontend.about announcer')}}</h3>
-        				<article>{!! $program->about_announcer !!}</article>
+        				<article>{{ $program->about_announcer }}</article>
         			</div><!--about-announcer-->
 				@endif
                 @if(!$videos->isEmpty())

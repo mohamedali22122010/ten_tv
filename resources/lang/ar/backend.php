@@ -188,5 +188,8 @@ return [
     'Not Home'=>'Not Home', 
     'Create New Broadcast '=>'Create New Broadcast ', 
     'Show Name'=>'Show Name', 
+    'inactive'=>'Inactive', 
+    'Program Order'=>'Program Order', 
+    'Programs'=>'Programs', 
     ''=>'', 
 ];

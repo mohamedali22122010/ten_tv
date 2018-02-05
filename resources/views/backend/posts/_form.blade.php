@@ -96,6 +96,7 @@
         
    		<div class="form-group">
 				<label class="col-md-3"><input class="minimal" name="status" type="checkbox" @if($post->status) checked @endif> {{ trans('backend.Set Active') }} </label>			
+                <label class="col-md-3"><input class="minimal" name="home_page_soon" type="checkbox" @if($post->home_page_soon) checked @endif> {{ trans('backend.Home Page Soon Section') }} </label>                
 				<label class="col-md-3"><input class="minimal" name="home_page" type="checkbox" @if($post->home_page) checked @endif> {{ trans('backend.Home Page') }} </label>			   				
 		</div>
 	

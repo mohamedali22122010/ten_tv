@@ -1,4 +1,4 @@
-@extends('layouts.backend',['page_title'=>trans('backend.Posts')])
+@extends('layouts.backend',['page_title'=>trans('backend.Programs')])
 @section('title')@parent - {{ trans('product.globals.categories') }} @stop
 @section('content-header')
 <ol class="breadcrumb">
@@ -25,6 +25,7 @@
 								<input type="checkbox" class="selectAll">
 								</td>
 								<th> {{trans('backend.Title')}} </th>
+								<th> {{trans('backend.Program Order')}} </th>
 								<th> {{trans('backend.Status')}} </th>
 								<th> {{trans('backend.Action')}} </th>
 							</form>
@@ -39,6 +40,7 @@
 									<input class="bulk-action-checkbox" name="checkbox" type="checkbox" data-id="{{$program->id}}" data-delete="{{ route('program.destroy',$program->id) }}"  data-csrf='{{ csrf_token() }}' >
 								</td>
 								<td>{{ str_limit($program->title,70)}}</td>
+								<td>{{ $program->ordering}}</td>
 								<td> 
 									@if($program->status == 1)
 										<div class='badge bg-green'>{{trans('backend.active')}}</div>

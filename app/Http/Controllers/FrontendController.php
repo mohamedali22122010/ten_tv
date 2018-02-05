@@ -76,7 +76,7 @@ class FrontendController extends Controller
             $programs = $programs->where('title', 'like', "%".$key."%");
             $programs = $programs->OrWhere('description', 'like', "%".$key."%");
         }
-        $programs = $programs->orderBy('id','desc')->get();
+        $programs = $programs->orderBy('ordering','asc')->get();
         return view('frontend.programs',compact('programs'));
     }
 
@@ -127,7 +127,7 @@ class FrontendController extends Controller
 	
 	public function programs()
 	{
-		$programs = Program::approved()->orderBy('id','desc')->get();
+		$programs = Program::approved()->orderBy('ordering','asc')->get();
 		return view('frontend.programs',compact('programs'));
 	}	
 	
