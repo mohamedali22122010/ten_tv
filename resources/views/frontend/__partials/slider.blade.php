@@ -6,14 +6,7 @@
             <picture>
 					@foreach($slide->getMedia('main_image') as $key => $image)
 					    <img src="{{ $image->getUrl() }}" alt="Home Slider">
-					@endforeach
-                    @foreach($slide->getMedia('mobile_image') as $key => $image)
-                        <source media="(max-width: 551px)" srcset="{{ $image->getUrl() }}">
-                    @endforeach
-                    @foreach($slide->getMedia('tablet_image') as $key => $image)
-                        <source media="(max-width: 767px)" srcset="{{ $image->getUrl() }}">
-                    @endforeach
-                    
+					@endforeach                    
             </picture>
             <div class="container">
                 <div class="slider_content">

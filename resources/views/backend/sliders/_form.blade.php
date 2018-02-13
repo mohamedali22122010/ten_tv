@@ -38,11 +38,12 @@
             </ul>
         </div>
         <!-- imagesBlock -->
-
         <div class="form-group">
             <label>Main Image</label>
-            <input type="file" data-parsley-required="true" name="main_image">
+            <code>( Image width prefere equal 1920 and height equal 600 )</code>
+            <input type="file" data-parsley-required="false" name="main_image">
         </div>
+        <!--
 
         <div class="imagesBlock row">
             <ul>
@@ -55,12 +56,13 @@
                 @endforeach
             </ul>
         </div>
+        -->
         <!-- imagesBlock -->
 
-
+        <!--
         <div class="form-group">
             <label>Tablet Image</label>
-            <input type="file" data-parsley-required="true" name="tablet_image">
+            <input type="file" data-parsley-required="false" name="tablet_image">
         </div>
 
         <div class="imagesBlock row">
@@ -74,13 +76,14 @@
                 @endforeach
             </ul>
         </div>
+        -->
         <!-- imagesBlock -->
-
+        <!--
         <div class="form-group">
             <label>Mobile Image</label>
             <input type="file" data-parsley-required="true" name="mobile_image">
         </div>
-
+        -->
 		<div class="form-group">
 			<label>
 				<input class="minimal" name="active" type="checkbox" @if($slider-> active) checked @endif> Set Active 

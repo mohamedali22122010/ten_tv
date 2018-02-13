@@ -59,7 +59,7 @@ class FrontendController extends Controller
 		}
 		$upcommingShow = $this->getShow($dayOfWeek,false,$notInIds);
 		if(!$upcommingShow){
-			$upcommingShow = $this->getShow($dayOfWeek+1);			
+			$upcommingShow = $this->getShow($dayOfWeek+1,false,$notInIds);			
 		}
 				
 		return view('frontend.index',compact('slides','posts', 'videos', 'soonPosts','currentShow','nextShow','upcommingShow'));
@@ -134,8 +134,8 @@ class FrontendController extends Controller
 	public function programDetails($slug)
 	{
 		$program = Program::approved()->where('slug',$slug)->firstOrFail();
-		$eposides = ProgramEposides::where('program_id',$program->id)->get();
-        $videos = FeatureVideo::where('program_id',$program->id)->get();
+		$eposides = ProgramEposides::where('program_id',$program->id)->orderBy('id','desc')->paginate(9);
+        $videos = FeatureVideo::where('program_id',$program->id)->orderBy('id','desc')->get();
 		return view('frontend.program_details',compact('program','eposides','videos'));		
 	}
 	

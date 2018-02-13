@@ -30,21 +30,45 @@
 	        <div class="Time-right"><!--Time-right-->
 	        	@if($currentShow)
 	            <div class="Time-item">
-	                <h4>{{$currentShow->program?$currentShow->program->title:$currentShow->program_name}}</h4>
+		            @if($currentShow->program)
+		            	@if($currentShow->program->status)
+		                <a href="{{url('program_detail',$currentShow->program->slug)}}">{{$currentShow->program->title}}</a>
+		                @else
+		                <h4>{{$currentShow->program->title}}</h4>
+		                @endif
+		            @else
+						{{$currentShow->program_name}}
+		            @endif
 	                <p>{{$currentShow->show_at}}</p>
 	                <button>{{trans('frontend.currently_shown')}}</button>
 	            </div>
 	            @endif
 	            @if($nextShow)
 	            <div class="Time-item">
-	                <h4>{{$nextShow->program?$nextShow->program->title:$nextShow->program_name}}</h4>
+		            @if($nextShow->program)
+		            	@if($nextShow->program->status)
+		                <a href="{{url('program_detail',$nextShow->program->slug)}}">{{$nextShow->program->title}}</a>
+		                @else
+		                <h4>{{$nextShow->program->title}}</h4>
+		                @endif
+		            @else
+						{{$nextShow->program_name}}
+		            @endif
 	                <p>{{$nextShow->show_at}}</p>
 	                <button>{{trans('frontend.next')}}</button>
 	            </div>
 	            @endif
 	            @if($upcommingShow)
 	            <div class="Time-item">
-	                <h4>{{$upcommingShow->program?$upcommingShow->program->title:$upcommingShow->program_name}}</h4>	            
+		            @if($upcommingShow->program)
+		            	@if($upcommingShow->program->status)
+		                <a href="{{url('program_detail',$upcommingShow->program->slug)}}">{{$upcommingShow->program->title}}</a>
+		                @else
+		                <h4>{{$upcommingShow->program->title}}</h4>
+		                @endif
+		            @else
+						{{$upcommingShow->program_name}}
+		            @endif
 	                <p>{{$upcommingShow->show_at}}</p>
 	            </div>
 	            @endif
@@ -95,6 +119,7 @@
 		</div>
 	</section>
 
+    @if(!$soonPosts->isEmpty())
 	<!--Soon-->
 	<section class="Soon">
 		<div class="title">
@@ -103,7 +128,6 @@
 			</div>
 		</div>
         
-        @if($soonPosts)
 	    <div class="container"><!--Container-->
 	    	
 	        <div id="owl-demo2" class=" owl-carousel owl-theme"><!--OWl Carousel-->
@@ -121,8 +145,8 @@
 	            @endforeach
 	        </div><!--OWl Carousel-->
 	    </div><!--Container-->
-	    @endif
 	</section>
+    @endif
 	<!--Category-->
 	<section class="Category">
 	   <div class="Category-item"><!--Category-item-->

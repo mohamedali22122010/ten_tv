@@ -24,4 +24,11 @@ return [
     'special_episode'=>'مقاطع خاصة',
     'about announcer'=>'عن المذيع',
     'featured video'=>'مقاطع مميزة',
+    'Sunday'=>'لااحد',
+    'Monday'=>'الاثنين',
+    'Tuesday'=>'الثلاثاء',
+    'Wednesday'=>'الاربعاء',
+    'Thursday'=>'الخميس',
+    'Friday'=>'الجمعه',
+    'Saturday'=>'السبت',
 ];

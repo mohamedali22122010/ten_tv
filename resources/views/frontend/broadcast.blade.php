@@ -42,7 +42,7 @@
             </div>
             <div class="Timeline-logo">
                 <div class="logo-time">
-                    <h4>{{$today->format('l')}}</h4>
+                    <h4>{{trans('frontend.'.$today->format('l'))}}</h4>
                     <p>{{$today->format('Y-m-d')}}</p>
                 </div>
                 <img src="{{ asset('frontend/assets/images/logo.gif') }}">
