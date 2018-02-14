@@ -30,10 +30,17 @@
                             <button>{{trans('frontend.currently_shown')}}</button>
                             <p>{{$broadcast->show_at}}</p>
                         </div>
+                        @if($broadcast->program)
                         <div class="item-img">
                             <img src="{{$broadcast->program->getMedia('images')->first()?$broadcast->program->getMedia('images')->first()->getUrl():''}}">
                             <h3>{{$broadcast->program->title}}</h3>
                         </div>
+                        @else
+                        <div class="item-img">
+                            <img src="{{ asset('frontend/assets/images/logo.gif') }}">
+                            <h3>{{$broadcast->program_name}}</h3>
+                        </div>
+                        @endif
                     </div><!--item-->
 		            @endforeach
 

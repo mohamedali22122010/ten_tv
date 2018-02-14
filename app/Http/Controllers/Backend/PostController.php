@@ -21,7 +21,7 @@ class PostController extends BackendController
      */
     public function index()
     {
-        $posts = Post::paginate(10);
+        $posts = Post::get();
         return view('backend.posts.index',compact('posts'));
     }
 

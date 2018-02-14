@@ -22,7 +22,7 @@ class CategoryController extends Controller
     {
         //
         $categories =Category::orderBy('id','asc');
-		$categories = $categories->paginate(10);
+		$categories = $categories->get();
 
         return view('backend.categories.index',compact('categories'));
     }

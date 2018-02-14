@@ -143,7 +143,7 @@ class FrontendController extends Controller
 	{
 		$dayOfWeek = Carbon::now()->dayOfWeek;
 		$broadcasts = ProgramTime::with(['program'=>function($query){
-			$query->where('status',1);
+			//$query->where('status',1);
 		}])->where('day',$dayOfWeek)->orderBy('show_at','desc')->get();
 		$today = Carbon::now();
 		$currentShow = ProgramTime::with(['program'=>function($query){

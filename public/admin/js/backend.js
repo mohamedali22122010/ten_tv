@@ -1,23 +1,27 @@
+
+   function deleteRecord(){
+      $('.delete').on('click', function (e) {
+         var deleteData = $(this);
+         swal({title: "هل انت متأكد ؟",
+            text: "لا يمكنك التراجع عن الحذف بعض الضغط على رز نعم !",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD4140",
+            closeOnConfirm: false,
+            showLoaderOnConfirm: true,
+         },
+         function(){
+
+            deleteDataAjax($(deleteData).data('action'),
+                           $(deleteData).data('csrf'),
+                           $(deleteData).data('id'));
+         });
+         e.preventDefault();
+      });   
+   }   
+
 $(function () {
-   $('.delete').on('click', function (e) {
-      var deleteData = $(this);
-      swal({title: "هل انت متأكد ؟",
-         text: "لا يمكنك التراجع عن الحذف بعض الضغط على رز نعم !",
-         type: "warning",
-         showCancelButton: true,
-         confirmButtonColor: "#DD4140",
-         closeOnConfirm: false,
-         showLoaderOnConfirm: true,
-      },
-      function(){
-
-         deleteDataAjax($(deleteData).data('action'),
-                        $(deleteData).data('csrf'),
-                        $(deleteData).data('id'));
-      });
-      e.preventDefault();
-   });
-
+   
    function deleteDataAjax(action,csrf,id)
    {
       $.ajax({

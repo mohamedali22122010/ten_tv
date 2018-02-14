@@ -45,7 +45,7 @@
                 </div><!--blog-img-->
                 <div class="text">
                     <article>
-                    	{!! $program->description !!}
+                        {!! $program->description !!}
                     </article>
                 </div>
                 <div class="Program-data">
@@ -68,9 +68,14 @@
                         @endforeach                      
                     </div>
                 </div>
+                <div class="pagination">
+                    <ul>
+                        {{$eposides->links()}}
+                    </ul>
+                </div>
             </div>
-			
-			<div class="row-left">
+            
+            <div class="row-left">
                 <div class="Program-time">
                     <h2>{{trans('frontend.broadcasttime')}}</h2>
                     <div class="Times">
@@ -80,14 +85,14 @@
                     </div>
                 </div><!--Program-time-->
                 @if($program->about_announcer)
-    			    <div class="about-announcer">
-        				<h3>{{trans('frontend.about announcer')}}</h3>
-        				<article>{{ $program->about_announcer }}</article>
-        			</div><!--about-announcer-->
-				@endif
+                    <div class="about-announcer">
+                        <h3>{{trans('frontend.about announcer')}}</h3>
+                        <article>{{ $program->about_announcer }}</article>
+                    </div><!--about-announcer-->
+                @endif
                 @if(!$videos->isEmpty())
                     <div class="pro-fe">
-    					<h3>{{trans('frontend.featured video')}}</h3>
+                        <h3>{{trans('frontend.featured video')}}</h3>
                         <div class="row">
                             @foreach($videos as $video)
                             <div class="video-item">
@@ -100,9 +105,9 @@
                             </div><!--video-item-->
                             @endforeach
                         </div><!--row-->
-    				</div><!--pro-fe-->
-                @endif				
-			</div><!--row-left-->
+                    </div><!--pro-fe-->
+                @endif              
+            </div><!--row-left-->
         </div>
     </div>
 </section>

@@ -21,7 +21,7 @@ class ProgramEposidesController extends BackendController
      */
     public function index()
     {
-        $eposides = ProgramEposides::orderBy('id','desc')->paginate(10);
+        $eposides = ProgramEposides::orderBy('id','desc')->get();
         return view('backend.eposides.index',compact('eposides'));
     }
 
@@ -33,7 +33,7 @@ class ProgramEposidesController extends BackendController
     public function create()
     {
         $eposide = new ProgramEposides;
-		$programs = Program::approved()->get()->pluck('title','id')->sort()->toArray();
+		$programs = Program::get()->pluck('title','id')->sort()->toArray();
         return view('backend.eposides.create',compact('eposide','programs'));
     }
 
@@ -74,7 +74,7 @@ class ProgramEposidesController extends BackendController
     public function edit($id)
     {
         $eposide = ProgramEposides::findOrFail($id);
-		$programs = Program::approved()->get()->pluck('title','id')->sort()->toArray();
+		$programs = Program::get()->pluck('title','id')->sort()->toArray();
         return view('backend.eposides.edit',compact('eposide','programs'));
     }
 

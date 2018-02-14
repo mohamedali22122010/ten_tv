@@ -21,7 +21,7 @@ class FeatureVideoController extends BackendController
      */
     public function index()
     {
-        $videos = FeatureVideo::orderBy('is_home','desc')->orderBy('id','desc')->paginate(10);
+        $videos = FeatureVideo::orderBy('is_home','desc')->orderBy('id','desc')->get();
         return view('backend.videos.index',compact('videos'));
     }
 
@@ -33,7 +33,7 @@ class FeatureVideoController extends BackendController
     public function create()
     {
         $video = new FeatureVideo;
-		$programs = Program::approved()->get()->pluck('title','id')->sort()->toArray();
+		$programs = Program::get()->pluck('title','id')->sort()->toArray();
         return view('backend.videos.create',compact('video','programs'));
     }
 
@@ -78,7 +78,7 @@ class FeatureVideoController extends BackendController
     public function edit($id)
     {
         $video = FeatureVideo::findOrFail($id);
-		$programs = Program::approved()->get()->pluck('title','id')->sort()->toArray();
+		$programs = Program::get()->pluck('title','id')->sort()->toArray();
         return view('backend.videos.edit',compact('video','programs'));
     }
 

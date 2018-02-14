@@ -60,7 +60,6 @@
 					</tbody>
 				</table>
 				<!-- /.box-body -->
-				{{$pages->render()}}
 				<div class="box-footer clearfix"></div>
 			</div>
 		</div>
@@ -70,5 +69,15 @@
 @stop
 
 @section('scripts')
+<script type="text/javascript">
+$(function () {
+
+	$(".dataTable").dataTable( {
+	    "drawCallback": function( settings ) {
+	        deleteRecord();
+	    }
+	});
+});
+</script>
 
 @stop

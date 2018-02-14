@@ -19,7 +19,7 @@ class ProgramProdcastController extends BackendController
      */
     public function index()
     {
-        $broadcasts = ProgramTime::paginate(10);
+        $broadcasts = ProgramTime::get();
         return view('backend.broadcasts.index',compact('broadcasts'));
     }
 
@@ -32,7 +32,7 @@ class ProgramProdcastController extends BackendController
     {
         $broadcast = new ProgramTime;
 
-		$programs = Program::approved()->get()->pluck('title','id')->sort()->toArray();
+		$programs = Program::get()->pluck('title','id')->sort()->toArray();
         $programs['0'] = "Others";
         return view('backend.broadcasts.create',compact('broadcast','programs'));
     }
@@ -86,7 +86,7 @@ class ProgramProdcastController extends BackendController
     public function edit($id)
     {
         $broadcast = ProgramTime::findOrFail($id);
-		$programs = Program::approved()->get()->pluck('title','id')->sort()->toArray();
+		$programs = Program::get()->pluck('title','id')->sort()->toArray();
         $programs['0'] = "Others";
         return view('backend.broadcasts.edit',compact('broadcast','programs'));
     }

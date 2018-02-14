@@ -26,7 +26,7 @@ class PageController extends BackendController
 			if(!empty($value))
 				$pages->likeCondition($key,$value);
 		}*/
-		$pages = $pages->paginate(10);
+		$pages = $pages->get();
 		//$pages->appends($request->all());
 		$data['name'] = "Page";
         return view('backend.pages.index', compact('pages','data'));

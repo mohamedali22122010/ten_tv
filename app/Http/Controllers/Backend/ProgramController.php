@@ -20,7 +20,7 @@ class ProgramController extends BackendController
      */
     public function index()
     {
-        $programs = Program::orderBy('ordering','asc')->paginate(10);
+        $programs = Program::orderBy('ordering','asc')->get();
         return view('backend.programs.index',compact('programs'));
     }
 
