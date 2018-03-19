@@ -32,4 +32,12 @@ class ProgramTime extends Model
     {
          return $this->belongsTo(Program::class,'program_id');
     }
+
+    public function getImage() 
+    {
+    	if($this->program) {
+    		return $this->program->getImageAttribute();
+    	}
+    	return null;
+    }
 }

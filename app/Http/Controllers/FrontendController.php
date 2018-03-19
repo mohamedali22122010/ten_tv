@@ -190,6 +190,67 @@ class FrontendController extends Controller
 
         return "OK";
     }
+
+
+
+    //--------------------------------- Mobile Api -----------------------//
+
+    public function GetMainpagePrograms(Request $request)
+    {
+        
+    }
+
+    public function GetPrograms(Request $request)
+    {
+        $programs = Program::approved()->orderBy('ordering','asc')->paginate(10);
+        foreach ($programs as $program) {
+            $program->title = $program->title;
+            $program->about_announcer = $program->about_announcer;
+            $program->description = $program->description;
+            $program->show_text = $program->show_text;
+            $program->repeate_text = $program->repeate_text;
+
+        }
+        return $programs;
+    }
 	
+    public function GetProgramDetails(Request $request)
+    {
+        $program = Program::approved()->where('id',$request->id)->firstOrFail();
+        
+        $program->title = $program->title;
+        $program->about_announcer = $program->about_announcer;
+        $program->description = $program->description;
+        $program->show_text = $program->show_text;
+        $program->repeate_text = $program->repeate_text;
+
+        $episodes = $program->episodes()->paginate(10);
+        foreach ($episodes as $eposide) {
+            $eposide->title = $eposide->title; 
+        }
+        return ['program'=>$program,'episodes'=>$episodes->appends(request()->query())];
+    }
+
+    public function GetShowSchedule(Request $request)
+    {
+        $dayOfWeek = Carbon::now()->dayOfWeek;
+        $broadcasts = ProgramTime::with(['program'=>function($query){
+            //$query->where('status',1);
+        }])->where('day',$dayOfWeek)->orderBy('show_at','desc')->get();
+        $today = Carbon::now();
+        $currentShow = ProgramTime::with(['program'=>function($query){
+//            $query->where('status',1);
+        }])->where('day',$dayOfWeek)->where('show_at','<=',Carbon::now()->format('H:i'))->orderBy('show_at','desc')->first();
+        
+        $todayShow = [];
+        foreach ($broadcasts as $k=>$broadcast) {
+            $todayShow[$k]['title'] = $broadcast->program ? $broadcast->program->title:$broadcast->program_name;
+            $todayShow[$k]['image'] = $broadcast->getImage();
+            $todayShow[$k]['time'] = $broadcast->show_at;
+            $todayShow[$k]['isLiveNow'] = ($broadcast->id == $currentShow->id)?true:false;
+        }
+        return ['show'=>$todayShow];
+
+    }
 
 }

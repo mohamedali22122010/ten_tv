@@ -70,3 +70,11 @@ Route::group(['middleware'=>['frontend','web']],function(){
 	Route::get('/callback', 'SocialAuthController@callback');
     Route::get('language/{name}',['as'=>'lanuage.change' , 'uses' => 'FrontendController@changeLanguage']);		
 });
+
+Route::group(['prefix' => 'api'], function () {
+
+    Route::get('/GetMainpagePrograms', 'FrontendController@GetMainpagePrograms');
+    Route::get('/GetPrograms', 'FrontendController@GetPrograms');
+    Route::get('/GetProgramDetails', 'FrontendController@GetProgramDetails');
+    Route::get('/GetShowSchedule', 'FrontendController@GetShowSchedule');
+});

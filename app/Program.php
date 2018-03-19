@@ -17,12 +17,25 @@ class Program extends Model implements HasMediaConversions
 	
 	public $translatable = ['title', 'about_announcer', 'description', 'show_text', 'repeate_text'];
 	
+    public $appends = ['image'];
+
 	protected $table = 'programs';
 				
 	public function scopeApproved($query)
 	{
 		return $query->where('status',1);
 	}
+
+    public function episodes()
+    {
+         return $this->hasMany(ProgramEposides::class,'program_id');
+    }
+
+    public function getImageAttribute()
+    {
+        return $this->getMedia('images')->first()?$this->getMedia('images')->first()->getUrl():'';
+    }
+
      /*
      * Add Images sizes and filters here
      */
