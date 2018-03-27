@@ -191,13 +191,51 @@ class FrontendController extends Controller
         return "OK";
     }
 
+    public function format($show)
+    {
+        if($show){
+            $return = [];
+            $return['url'] = null;
+            if($show->program){
+                if($show->program->status){
+                    $return['url'] = url('program_detail',$show->program->slug);
+                    $return['name'] = $show->program->title;
+                }else{
+                    $return['name'] = $show->program->title;
+                }
+            }else{
+                $return['name'] = $show->program_name;
+            }
+            $return['show_at'] = $show->show_at;
+            return $return;
+        }
+        return null;
+    }
 
 
     //--------------------------------- Mobile Api -----------------------//
 
     public function GetMainpagePrograms(Request $request)
     {
-        
+        $dayOfWeek = Carbon::now()->dayOfWeek;
+        $currentShow = $this->getShow($dayOfWeek,true);
+        $notInIds = []; 
+        $nextShow = $this->getShow($dayOfWeek);
+        if(!$nextShow){
+            $nextShow = $this->getShow($dayOfWeek+1);
+        }
+        if($nextShow){
+            $notInIds[] = $nextShow->id;
+        }
+        $upcommingShow = $this->getShow($dayOfWeek,false,$notInIds);
+        if(!$upcommingShow){
+            $upcommingShow = $this->getShow($dayOfWeek+1,false,$notInIds);          
+        }
+        $currentShow = $this->format($currentShow);
+        $nextShow = $this->format($nextShow);
+        $upcommingShow = $this->format($upcommingShow);
+
+        return ['currentShow'=>$currentShow,'nextShow'=>$nextShow, 'upcommingShow'=>$upcommingShow];
     }
 
     public function GetPrograms(Request $request)
