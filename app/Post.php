@@ -18,7 +18,9 @@ class Post extends Model implements HasMediaConversions
 	public $translatable = ['title', 'description', 'content', 'meta_tag_title', 'meta_tag_description', 'meta_tag_keywords'];
 	
 	protected $table = 'posts';
-		
+	
+    public $appends = ['image'];
+
 	
 	public function creator()
     {
@@ -34,7 +36,11 @@ class Post extends Model implements HasMediaConversions
 		];
 	}
 	
-	
+	public function getImageAttribute()
+    {
+        return $this->getMedia('images')->first()?$this->getMedia('images')->first()->getUrl():'';
+    }
+    
 	public function category()
     {
          return $this->belongsTo(Category::class,'category_id');
