@@ -195,12 +195,14 @@ class FrontendController extends Controller
     {
         if($show){
             $return = [];
+            $return['id'] = null;
             $return['url'] = null;
             $return['image'] = null;
             if($show->program){
                 if($show->program->status){
                     $return['url'] = url('program_detail',$show->program->slug);
                 }
+                $return['id'] = $show->program->id;
                 $return['name'] = $show->program->title;
                 $return['image'] = $show->program->image;
                 unset($show->program->media);
@@ -235,12 +237,18 @@ class FrontendController extends Controller
         $currentShow = $this->format($currentShow);
         $nextShow = $this->format($nextShow);
         $upcommingShow = $this->format($upcommingShow);
+        
+        return ['currentShow'=>$currentShow,'nextShow'=>$nextShow, 'upcommingShow'=>$upcommingShow];
+    }
+
+    public function getSoonPosts(Request $request)
+    {
         $soonPosts = Post::lightSelection()->approved()->where('home_page_soon',1)->orderBy('id','desc')->limit(3)->get();
         foreach ($soonPosts as $post) {
             $post->title = $post->title;
             $post->description = $post->description;
         }
-        return ['currentShow'=>$currentShow,'nextShow'=>$nextShow, 'upcommingShow'=>$upcommingShow,'soon'=>$soonPosts];
+        return ['soon'=>$soonPosts];
     }
 
     public function GetPrograms(Request $request)

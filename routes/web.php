@@ -77,4 +77,5 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('/GetPrograms', 'FrontendController@GetPrograms');
     Route::get('/GetProgramDetails', 'FrontendController@GetProgramDetails');
     Route::get('/GetShowSchedule', 'FrontendController@GetShowSchedule');
+    Route::get('/soon', 'FrontendController@getSoonPosts');
 });
