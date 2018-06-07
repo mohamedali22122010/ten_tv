@@ -237,8 +237,12 @@ class FrontendController extends Controller
         $currentShow = $this->format($currentShow);
         $nextShow = $this->format($nextShow);
         $upcommingShow = $this->format($upcommingShow);
-        
-        return ['currentShow'=>$currentShow,'nextShow'=>$nextShow, 'upcommingShow'=>$upcommingShow];
+        $slides = Slider::select('id')->where('active','=',1)->get();
+        foreach($slides as $slide){
+            $slide->media_url = $slide->getMedia('main_image')->first()?$slide->getMedia('main_image')->first()->getUrl() :'';
+            unset($slide->media);
+        }
+        return ['currentShow'=>$currentShow,'nextShow'=>$nextShow, 'upcommingShow'=>$upcommingShow,'slides'=>$slides];
     }
 
     public function getSoonPosts(Request $request)
@@ -253,7 +257,7 @@ class FrontendController extends Controller
 
     public function GetPrograms(Request $request)
     {
-        $programs = Program::approved()->orderBy('ordering','asc')->paginate(10);
+        $programs = Program::approved()->orderBy('ordering','asc')->get();
         foreach ($programs as $program) {
             $program->title = $program->title;
             $program->about_announcer = $program->about_announcer;
