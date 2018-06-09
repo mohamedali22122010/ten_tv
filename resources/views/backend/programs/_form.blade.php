@@ -102,6 +102,10 @@
 				<label class="col-md-3"><input class="minimal" name="status" type="checkbox" @if($program->status) checked @endif> {{ trans('backend.Set Active') }} </label>			
 		</div>
 	
+        <div class="form-group">
+                <label class="col-md-3"><input class="minimal" name="mobile_home_page" type="checkbox" @if($program->mobile_home_page) checked @endif> {{ trans('backend.Show In Mobile Home') }} </label>           
+        </div>
+
 		<div class="form-group"></div>
         		
         <div class="submit">

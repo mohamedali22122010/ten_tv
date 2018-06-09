@@ -52,6 +52,12 @@ class ProgramController extends BackendController
             $program->status = 0;
         }
 		
+        if($request->mobile_home_page){
+            $program->mobile_home_page = 1;
+        }else{
+            $program->mobile_home_page = 0;
+        }
+
 		$program->save();
 		// associate images to product
         $this->dispatch(new AssociateMedia($program,$request->urls,'images'));
@@ -101,6 +107,12 @@ class ProgramController extends BackendController
             $program->status = 1;
         }else{
             $program->status = 0;
+        }
+
+        if($request->mobile_home_page){
+            $program->mobile_home_page = 1;
+        }else{
+            $program->mobile_home_page = 0;
         }
 		
 		$program->save();

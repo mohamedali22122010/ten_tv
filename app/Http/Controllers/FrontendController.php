@@ -242,7 +242,12 @@ class FrontendController extends Controller
             $slide->media_url = $slide->getMedia('main_image')->first()?$slide->getMedia('main_image')->first()->getUrl() :'';
             unset($slide->media);
         }
-        return ['currentShow'=>$currentShow,'nextShow'=>$nextShow, 'upcommingShow'=>$upcommingShow,'slides'=>$slides];
+        $featurePrograms = Program::select('id','title')->approved()->where('mobile_home_page',1)->get();
+        foreach($featurePrograms as $program){
+            $program->title = $program->title;
+        }
+
+        return ['currentShow'=>$currentShow,'nextShow'=>$nextShow, 'upcommingShow'=>$upcommingShow,'featurePrograms'=>$featurePrograms,'slides'=>$slides];
     }
 
     public function getSoonPosts(Request $request)
@@ -309,3 +314,5 @@ class FrontendController extends Controller
     }
 
 }
+
+

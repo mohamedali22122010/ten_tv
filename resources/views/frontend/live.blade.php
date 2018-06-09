@@ -18,7 +18,7 @@
 <!--Live-->
 <section class="Live">
     <div class="container">
-        <iframe src="https://www.youtube.com/embed/TZmDtfAOzz4" frameborder="0" allowfullscreen></iframe>
+        <iframe src="{{config('custom-setting.liveStreamLink')}}" frameborder="0" allowfullscreen></iframe>
     </div>
 </section>
 

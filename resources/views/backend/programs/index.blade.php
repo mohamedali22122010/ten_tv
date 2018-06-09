@@ -26,6 +26,7 @@
 								</td>
 								<th> {{trans('backend.Title')}} </th>
 								<th> {{trans('backend.Program Order')}} </th>
+								<th> {{trans('backend.In Mobile')}} </th>
 								<th> {{trans('backend.Status')}} </th>
 								<th> {{trans('backend.Action')}} </th>
 							</form>
@@ -41,6 +42,13 @@
 								</td>
 								<td>{{ str_limit($program->title,70)}}</td>
 								<td>{{ $program->ordering}}</td>
+								<td> 
+									@if($program->mobile_home_page == 1)
+										<div class='badge bg-green'>{{trans('backend.In Mobile')}}</div>
+									@elseif($program->mobile_home_page == 0)
+										<div class='badge bg-red'>{{trans('backend.Not In Mobile')}}</div>
+									@endif
+								</td>
 								<td> 
 									@if($program->status == 1)
 										<div class='badge bg-green'>{{trans('backend.active')}}</div>
