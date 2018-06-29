@@ -78,4 +78,6 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('/GetProgramDetails', 'FrontendController@GetProgramDetails');
     Route::get('/GetShowSchedule', 'FrontendController@GetShowSchedule');
     Route::get('/soon', 'FrontendController@getSoonPosts');
+	Route::get('/news', 'FrontendController@getNews');
+	Route::get('/newsDetails', 'FrontendController@getNewsDetail');
 });

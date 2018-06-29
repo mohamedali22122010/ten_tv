@@ -313,6 +313,28 @@ class FrontendController extends Controller
 
     }
 
+    public function getNews()
+	{
+        $posts = Post::approved()->orderBy('id','desc')->paginate(10);
+        foreach ($posts as $post) {
+            $post->title = $post->title;
+            $post->description = $post->description;
+            $post->content = $post->content;
+        }
+		return $posts;
+    }
+    
+    public function getNewsDetail(Request $request)
+	{
+        $post = Post::approved()->findOrFail($request->id);
+        $post->title = $post->title;
+        $post->description = $post->description;
+        $post->content = $post->content;
+        return $post;
+	}	
+
+
+
 }
 
 
